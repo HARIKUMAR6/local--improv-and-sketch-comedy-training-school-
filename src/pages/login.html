@@ -1,24 +1,145 @@
-<!-- @page title="Login Portal" nav="login" robots="noindex, follow" description="Sign in to the student portal to view your classes, schedule, and show updates." -->
+<!-- @page title="Login Portal" robots="noindex, follow" description="Sign in to the student portal or create an account." -->
 <!doctype html>
 <html lang="en" dir="ltr" class="no-js">
 <head>
   <!-- @include partials/head.html -->
+  <script src="js/login.js" defer></script>
 </head>
-<body>
-  <!-- @include partials/header.html -->
+<body class="auth-body">
+  <!--
+    Standalone sign-in and registration page: no public header/footer, no dashboard shell.
+    There is no authentication backend yet. js/login.js validates both forms and then says
+    plainly that online sign-in and registration are not connected; it never signs anyone in,
+    never opens the dashboard, and never stores passwords.
+  -->
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-  <main id="main" tabindex="-1">
-    <header class="page-intro">
-      <div class="container-site grid gap-4">
-        <h1 class="page-title">Login Portal</h1>
-        <p class="lead">Sign in to see your classes, rehearsal schedule, and show updates.</p>
+  <div class="auth-shell">
+    <!-- Supporting photo, desktop only. -->
+    <div class="auth-media" aria-hidden="true">
+      <img src="assets/images/home1-approach-class-exercise.jpg" width="960" height="1280" alt="" decoding="async">
+      <p class="auth-media-line">Classes, progress and showcases, in one place.</p>
+    </div>
+
+    <div class="auth-column">
+      <div class="auth-topline">
+        <a class="brand" href="index.html" aria-label="{{site.name}} home">
+          <!-- @include assets/icons/logo-mark.svg -->
+          <span>{{site.name}}</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <button class="icon-btn" type="button" data-theme-toggle data-requires-js aria-label="Switch to dark theme">
+            <!-- @include assets/icons/moon.svg -->
+            <!-- @include assets/icons/sun.svg -->
+          </button>
+          <div class="dir-switch" role="group" aria-label="Text direction" data-requires-js>
+            <button type="button" data-dir-option="ltr" aria-pressed="true">LTR</button>
+            <button type="button" data-dir-option="rtl" aria-pressed="false">RTL</button>
+          </div>
+        </div>
       </div>
-    </header>
 
-    <!-- Page sections go here, each as <section class="section"> with a .container-site inside. -->
-  </main>
+      <main class="auth-main" id="main" tabindex="-1">
+        <div class="auth-card">
+          <div class="grid gap-1.5">
+            <h1 class="auth-title">Student portal</h1>
+            <p class="text-[0.9375rem] text-fg-soft">Sign in to your account, or create one to get started.</p>
+          </div>
 
-  <!-- @include partials/footer.html -->
-  <!-- @include partials/scroll-top.html -->
+          <div class="auth-tabs" role="tablist" aria-label="Account">
+            <button class="auth-tab" type="button" role="tab" id="tab-signin" aria-controls="panel-signin" aria-selected="true" data-auth-tab="signin">Sign in</button>
+            <button class="auth-tab" type="button" role="tab" id="tab-register" aria-controls="panel-register" aria-selected="false" tabindex="-1" data-auth-tab="register">Create account</button>
+          </div>
+
+          <!-- Sign in ======================================================= -->
+          <section class="auth-panel" id="panel-signin" role="tabpanel" aria-labelledby="tab-signin" data-auth-panel="signin">
+            <form class="grid gap-4" data-auth-form="signin" novalidate>
+              <div class="form-field">
+                <label class="form-label" for="signin-email">Email address</label>
+                <input class="form-control" id="signin-email" name="email" type="email" inputmode="email" autocomplete="username" spellcheck="false" required aria-describedby="signin-email-error">
+                <p class="form-error" id="signin-email-error" hidden></p>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="signin-password">Password</label>
+                <div class="password-field">
+                  <input class="form-control" id="signin-password" name="password" type="password" autocomplete="current-password" required aria-describedby="signin-password-error">
+                  <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false" aria-controls="signin-password" data-password-toggle>
+                    <!-- @include assets/icons/eye.svg -->
+                    <!-- @include assets/icons/eye-off.svg -->
+                  </button>
+                </div>
+                <p class="form-error" id="signin-password-error" hidden></p>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+                <label class="form-check">
+                  <input type="checkbox" name="remember">
+                  <span>Remember me</span>
+                </label>
+                <button class="auth-link" type="button" aria-expanded="false" aria-controls="forgot-help" data-forgot-toggle>Forgot password?</button>
+              </div>
+
+              <div class="auth-note" id="forgot-help" data-forgot-help hidden>
+                <p>Password resets aren’t available online yet. <a class="link" href="contact.html">Contact the team</a> and we’ll help you get back into your account.</p>
+              </div>
+
+              <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+
+              <div class="auth-note" role="status" tabindex="-1" data-auth-status hidden></div>
+            </form>
+          </section>
+
+          <!-- Create account ================================================ -->
+          <section class="auth-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register" data-auth-panel="register" hidden>
+            <form class="grid gap-4" data-auth-form="register" novalidate>
+              <div class="form-field">
+                <label class="form-label" for="register-name">Full name</label>
+                <input class="form-control" id="register-name" name="name" type="text" autocomplete="name" required aria-describedby="register-name-error">
+                <p class="form-error" id="register-name-error" hidden></p>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="register-email">Email address</label>
+                <input class="form-control" id="register-email" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" required aria-describedby="register-email-error">
+                <p class="form-error" id="register-email-error" hidden></p>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="register-password">Password</label>
+                <div class="password-field">
+                  <input class="form-control" id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required aria-describedby="register-password-hint register-password-error">
+                  <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false" aria-controls="register-password" data-password-toggle>
+                    <!-- @include assets/icons/eye.svg -->
+                    <!-- @include assets/icons/eye-off.svg -->
+                  </button>
+                </div>
+                <p class="form-hint" id="register-password-hint">At least 8 characters.</p>
+                <p class="form-error" id="register-password-error" hidden></p>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="register-confirm">Confirm password</label>
+                <div class="password-field">
+                  <input class="form-control" id="register-confirm" name="confirm" type="password" autocomplete="new-password" maxlength="128" required aria-describedby="register-confirm-error">
+                  <button class="password-toggle" type="button" aria-label="Show password" aria-pressed="false" aria-controls="register-confirm" data-password-toggle>
+                    <!-- @include assets/icons/eye.svg -->
+                    <!-- @include assets/icons/eye-off.svg -->
+                  </button>
+                </div>
+                <p class="form-error" id="register-confirm-error" hidden></p>
+              </div>
+
+              <button class="btn btn-primary btn-block" type="submit">Create account</button>
+
+              <div class="auth-note" role="status" tabindex="-1" data-auth-status hidden></div>
+            </form>
+          </section>
+        </div>
+
+        <p class="auth-help">Questions about classes or your account? <a class="link" href="contact.html">Contact the team</a></p>
+      </main>
+    </div>
+  </div>
 </body>
 </html>

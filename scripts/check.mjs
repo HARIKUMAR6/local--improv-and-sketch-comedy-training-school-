@@ -5,7 +5,8 @@
  *   - every local href/src (and #fragment) resolves
  *   - each page has the required structure (lang, dir, title, one <h1>, <main id="main">)
  *   - shared header controls and the current-page marker are present
- *     (the student portal, an app page, is checked for its own sidebar and top-bar controls)
+ *     (the student portal, an app page, is checked for its own sidebar and top-bar controls;
+ *      the standalone login page for its forms and controls, and its script for no storage use)
  *   - the footer has exactly four social links, opened safely in a new tab
  *   - no unwanted placeholder wording is visible
  *
@@ -55,6 +56,21 @@ const APP_HOOKS = [
   'href="login.html"', // logout
   'class="skip-link"',
 ];
+// Auth pages (login) are standalone: brand link, theme/direction controls and both forms,
+// with no public header/footer or portal shell. Their scripts must never store credentials.
+const AUTH_PAGES = new Map([["login.html", "js/login.js"]]);
+const AUTH_HOOKS = [
+  "data-theme-toggle",
+  'data-dir-option="ltr"',
+  'data-dir-option="rtl"',
+  'class="brand" href="index.html"',
+  'class="skip-link"',
+  'role="tablist"',
+  'data-auth-form="signin"',
+  'data-auth-form="register"',
+];
+const AUTH_FORBIDDEN_MARKUP = ["data-site-header", "data-site-footer", "data-sidebar"];
+const STORAGE_APIS = /\b(localStorage|sessionStorage|document\.cookie)\b/;
 
 const errors = [];
 const fail = (message) => errors.push(message);
@@ -116,6 +132,18 @@ for (const page of PAGES) {
       if (!html.includes(hook)) fail(`${page}: portal control [${hook}] missing`);
     }
     if (!/<aside[^>]*data-sidebar/.test(html)) fail(`${page}: missing portal sidebar`);
+  } else if (AUTH_PAGES.has(page)) {
+    // Standalone auth page
+    for (const hook of AUTH_HOOKS) {
+      if (!html.includes(hook)) fail(`${page}: auth page control [${hook}] missing`);
+    }
+    for (const marker of AUTH_FORBIDDEN_MARKUP) {
+      if (html.includes(marker)) fail(`${page}: standalone auth page must not include [${marker}]`);
+    }
+    const scriptPath = path.join(distDir, AUTH_PAGES.get(page));
+    const script = existsSync(scriptPath) ? readFileSync(scriptPath, "utf8").replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, "") : "";
+    if (!script) fail(`${page}: missing ${AUTH_PAGES.get(page)}`);
+    else if (STORAGE_APIS.test(script)) fail(`${AUTH_PAGES.get(page)}: must not use browser storage or cookies`);
   } else {
     // Shared header
     for (const hook of HEADER_HOOKS) {

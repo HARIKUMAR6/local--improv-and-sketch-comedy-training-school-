@@ -31,9 +31,11 @@ The built pages use relative paths, so `dist/index.html` can also be opened dire
 src/
   pages/            One file per page → dist/<name>.html
     _styleguide.html  Component reference (built by `npm run dev` only)
-  partials/         Shared markup: head.html, header.html, footer.html
+  partials/         Shared markup: head.html, header.html, footer.html, scroll-top.html
   css/main.css      Tailwind entry: design tokens, themes, base styles, components
-  js/main.js        Theme toggle, text direction, mobile menu, footer year
+  js/main.js        Theme toggle, text direction, mobile menu, footer year, contact
+                     details (site.json → contact, used by the footer and Contact
+                     page), scroll-to-top button
   assets/icons/     SVG icons (inlined with @include)
   assets/images/    Images (copied to dist/assets/images)
   site.json         Brand name, descriptions, social links
@@ -50,9 +52,9 @@ dist/               Generated output; do not edit (git-ignored)
 | `description`       | Default meta description                                             |
 | `footerDescription` | Short description in the footer                                      |
 | `social.*`          | Footer social links (Instagram, Facebook, YouTube, LinkedIn)         |
-| `contact.email`     | Contact page email row (`mailto:` link). Hidden while empty          |
-| `contact.phone`     | Contact page phone row (`tel:` link). Hidden while empty             |
-| `contact.address`   | Contact page address, shown in "Get in touch" and "Find us". Hidden while empty |
+| `contact.email`     | Email row on the Contact page and in the footer (`mailto:` link). Hidden while empty |
+| `contact.phone`     | Phone row on the Contact page and in the footer (`tel:` link). Hidden while empty |
+| `contact.address`   | Address, shown on the Contact page and in the footer. Hidden while empty |
 | `contact.mapEmbedUrl` | Contact page map: a Google Maps embed URL (`https://www.google.com/maps/embed?...`) or OpenStreetMap embed URL. Currently a general city-centre area, captioned as such; point it at the school once the address is confirmed. No map is shown while empty |
 
 **Brand name:** "The Bit Lab" is a provisional name. Changing `name` updates it everywhere.
@@ -215,3 +217,8 @@ Photos across the site come from Wikimedia Commons under Creative Commons licens
   - The choice is saved in `localStorage` and applied in `<head>` before paint, so there is no flash.
   - If storage is blocked, the toggle still works for the current page.
 - **Direction:** the `LTR | RTL` control sets `<html dir>` and is saved the same way. On screens narrower than 640px it moves into the menu panel.
+
+## Footer and scroll-to-top
+
+- **Footer** (`partials/footer.html`): brand and description, then three link groups — **Explore** (Home 1, Home 2, About, Classes), **Performances & Info** (Shows, Contact, Dashboard, Login Portal) and **Get in Touch** (email, phone, address from `site.json → contact`). Get in Touch collapses entirely, heading included, while none of those three are set. A ruled bottom bar carries the copyright line and the four social icons. On every public page except the Dashboard, which uses its own sidebar instead.
+- **Scroll to top** (`partials/scroll-top.html`, behavior in `js/main.js`): a fixed icon button, bottom-end corner (right in LTR, left in RTL). Appears once the page is scrolled past roughly one screen, and hides again near the top or whenever the footer is in view. Scrolling follows the same `prefers-reduced-motion` handling as in-page anchors (smooth normally, instant when reduced motion is requested). Public pages only; omitted from the Dashboard.
