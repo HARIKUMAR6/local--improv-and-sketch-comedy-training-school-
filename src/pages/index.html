@@ -1,0 +1,298 @@
+<!-- @page nav="home" -->
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+  <!-- @include partials/head.html -->
+</head>
+<body>
+  <!-- @include partials/header.html -->
+
+  <!--
+    Home 1: seven sections.
+      1 Hero · 2 Approach · 3 Alumni highlights · 4 Find your class · 5 Upcoming shows · 6 Community · 7 Closing call to action
+    Photos are from Wikimedia Commons; credits are listed in README → Image credits.
+  -->
+  <main class="home-1" id="main" tabindex="-1">
+
+    <!-- 1. Hero ============================================================ -->
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="container-site grid gap-y-10 md:grid-cols-12 md:items-center md:gap-x-8">
+        <div class="grid gap-6 md:col-span-6">
+          <p class="kicker">Improv &amp; sketch comedy school</p>
+          <h1 class="font-heading text-hero" id="hero-title">
+            <span class="hero-line">Get out of your head.</span>
+            <span class="hero-line text-accent-text">Get into the scene.</span>
+          </h1>
+          <p class="lead max-w-[30rem]">Improv and sketch classes for curious beginners and working performers, with a live audience at the end of every term.</p>
+          <div class="mt-2 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a class="btn btn-primary btn-arrow" href="classes.html">
+              Explore Classes
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+            <a class="btn btn-outline" href="shows.html">See Upcoming Shows</a>
+          </div>
+        </div>
+
+        <figure class="md:col-span-6">
+          <img class="aspect-[4/3] w-full rounded-md object-cover object-[50%_45%] md:aspect-[4/5] lg:aspect-[5/4]" src="assets/images/home1-hero-two-person-scene.jpg" width="1280" height="1040" fetchpriority="high" alt="Two performers mid-scene on a theatre stage: one leans over a desk with his knee raised while the other sits on the floor looking up at him.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 2. Discover our approach ========================================= -->
+    <section class="section section-alt" aria-labelledby="approach-title">
+      <div class="container-site grid gap-y-8 md:grid-cols-12 md:items-center md:gap-x-8">
+        <figure class="order-2 md:order-1 md:col-span-5">
+          <img class="aspect-[4/3] w-full rounded-md object-cover object-[50%_40%] md:aspect-[4/5] lg:aspect-square" src="assets/images/home1-approach-class-exercise.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Two improvisers in a black-box studio, one gesturing toward a red curtain as the other watches, during a class exercise.">
+        </figure>
+
+        <div class="order-1 grid gap-6 md:order-2 md:col-span-7 lg:col-span-6 lg:col-start-7">
+          <div class="section-heading">
+            <p class="kicker">Discover our approach</p>
+            <h2 class="section-title" id="approach-title">The funniest scenes start with listening</h2>
+          </div>
+          <p class="max-w-[34rem] text-fg-soft">Improv looks like quick wit, but it’s trained attention: noticing what your partner offers and building on it. You learn by doing, through exercises, scenes and specific notes.</p>
+
+          <dl class="border-t border-line">
+            <div class="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[9rem_1fr] sm:gap-x-4">
+              <dt class="font-heading text-lg font-semibold leading-snug">Listening</dt>
+              <dd class="text-fg-soft">Hear the offer before you plan the reply.</dd>
+            </div>
+            <div class="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[9rem_1fr] sm:gap-x-4">
+              <dt class="font-heading text-lg font-semibold leading-snug">Collaboration</dt>
+              <dd class="text-fg-soft">Build scenes together, not for the laugh.</dd>
+            </div>
+            <div class="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[9rem_1fr] sm:gap-x-4">
+              <dt class="font-heading text-lg font-semibold leading-snug">Creativity</dt>
+              <dd class="text-fg-soft">Turn small details into bold choices.</dd>
+            </div>
+            <div class="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[9rem_1fr] sm:gap-x-4">
+              <dt class="font-heading text-lg font-semibold leading-snug">Confidence</dt>
+              <dd class="text-fg-soft">Think on your feet, on stage and off it.</dd>
+            </div>
+            <div class="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[9rem_1fr] sm:gap-x-4">
+              <dt class="font-heading text-lg font-semibold leading-snug">Performance</dt>
+              <dd class="text-fg-soft">Timing, character and presence, live.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Alumni highlights ============================================= -->
+    <!--
+      No verified alumni profiles exist yet, so this section describes the paths the
+      program prepares students for. To feature a real graduate (with their consent),
+      replace a path article with a profile using the same structure:
+
+        <article class="grid gap-x-5 gap-y-3 grid-cols-[6rem_1fr] sm:grid-cols-[8rem_1fr]">
+          <figure>
+            IMG with class "aspect-square w-full rounded-md object-cover", a portrait from assets/images/,
+            its width/height, loading="lazy" and alt text naming the person
+          </figure>
+          <div class="grid content-start gap-2">
+            <p class="label text-accent-text">ROLE OR SPECIALITY</p>
+            <h3 class="font-heading text-title-md">NAME</h3>
+            <p class="text-meta font-medium text-fg">HIGHLIGHT (verified, e.g. a show or credit)</p>
+            <blockquote class="text-fg-soft"><p>“SHORT QUOTE, approved by the alum”</p></blockquote>
+          </div>
+        </article>
+    -->
+    <section class="section" aria-labelledby="alumni-title">
+      <div class="container-site grid gap-10">
+        <div class="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-x-8">
+          <div class="section-heading lg:col-span-7">
+            <p class="kicker">Alumni highlights</p>
+            <h2 class="section-title" id="alumni-title">Where the training leads</h2>
+          </div>
+          <p class="max-w-[30rem] text-fg-soft lg:col-span-5">The paths the program is built around. Alumni stories join them as graduates share their work.</p>
+        </div>
+
+        <div class="grid gap-x-8 gap-y-10 lg:grid-cols-12 lg:items-start">
+          <article class="grid content-start gap-3 lg:col-span-7">
+            <figure class="mb-1">
+              <img class="aspect-[3/2] w-full rounded-md object-cover md:aspect-[16/9] lg:aspect-[3/2]" src="assets/images/home1-alumni-scene-partners.jpg" width="1280" height="857" loading="lazy" decoding="async" alt="On a small stage in front of a seated audience, one performer rests a hand on his scene partner’s cheek while they face each other.">
+            </figure>
+            <p class="label text-accent-text">Scene partnership</p>
+            <h3 class="font-heading text-title-lg">From strangers in class to trusted scene partners</h3>
+            <p class="max-w-[34rem] text-fg-soft">Scene work happens in pairs, so you learn to back a partner’s choices.</p>
+          </article>
+
+          <div class="grid content-start lg:col-span-5">
+            <article class="grid grid-cols-[6rem_1fr] gap-x-5 border-y border-line py-6 sm:grid-cols-[8rem_1fr] lg:pt-0 lg:border-t-0">
+              <figure>
+                <img class="aspect-square w-full rounded-md object-cover object-[50%_25%]" src="assets/images/home1-alumni-umbrella-scene.jpg" width="960" height="1301" loading="lazy" decoding="async" alt="Four performers on a dark stage under a blue umbrella, two standing and two crouched together, looking out at the audience.">
+              </figure>
+              <div class="grid content-start gap-2">
+                <p class="label text-accent-text">Ensemble performance</p>
+                <h3 class="font-heading text-title-md">From a first warm-up to a full ensemble show</h3>
+              </div>
+            </article>
+
+            <article class="grid grid-cols-[6rem_1fr] gap-x-5 border-b border-line py-6 sm:grid-cols-[8rem_1fr]">
+              <figure>
+                <img class="aspect-square w-full rounded-md object-cover" src="assets/images/home1-alumni-kneeling-scene.jpg" width="960" height="889" loading="lazy" decoding="async" alt="A performer kneels on stage reaching toward a tall scene partner who leans down over him.">
+              </figure>
+              <div class="grid content-start gap-2">
+                <p class="label text-accent-text">Writing &amp; character</p>
+                <h3 class="font-heading text-title-md">From a character idea to material of your own</h3>
+              </div>
+            </article>
+
+            <div class="grid gap-1 pt-6">
+              <p class="font-heading text-title-md font-semibold">Studied with us?</p>
+              <a class="text-link btn-arrow w-fit" href="contact.html">
+                Share your news
+                <!-- @include assets/icons/arrow-right.svg -->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Find your class =============================================== -->
+    <section class="section section-alt" aria-labelledby="classes-title">
+      <div class="container-site grid gap-10">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+          <div class="section-heading">
+            <p class="kicker">Find your class</p>
+            <h2 class="section-title" id="classes-title">Two crafts, one stage</h2>
+            <p class="max-w-[34rem] text-fg-soft">Both tracks run from complete beginner to experienced performer, and both end on stage.</p>
+          </div>
+          <a class="btn btn-primary btn-arrow w-fit shrink-0" href="classes.html">
+            Explore Classes
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+        </div>
+
+        <div class="grid gap-6 border-t border-line-strong pt-8 md:grid-cols-[1fr_auto_1fr] md:gap-10 lg:gap-14">
+          <article class="grid content-start gap-3">
+            <h3 class="font-heading text-[clamp(1.625rem,1.4rem+1vw,2.25rem)] leading-[1.1] tracking-[-0.03em]">Improv</h3>
+            <p class="font-heading text-title-md font-medium">Make it up together, in the moment.</p>
+            <p class="text-meta text-fg-muted">Listening · Scene work · Character · Group games</p>
+          </article>
+
+          <div class="flex items-center gap-4 md:flex-col" aria-hidden="true">
+            <span class="h-px flex-1 bg-line-strong md:hidden"></span>
+            <span class="craft-amp">&amp;</span>
+            <span class="h-px flex-1 bg-line-strong md:hidden"></span>
+          </div>
+
+          <article class="grid content-start gap-3">
+            <h3 class="font-heading text-[clamp(1.625rem,1.4rem+1vw,2.25rem)] leading-[1.1] tracking-[-0.03em]">Sketch</h3>
+            <p class="font-heading text-title-md font-medium">Write it, rewrite it, then perform it.</p>
+            <p class="text-meta text-fg-muted">Premises · Writing · Rewrites · Performing your material</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. On stage: upcoming shows ====================================== -->
+    <!--
+      The bill lists the kinds of shows students perform in. Specific dates, venues and
+      tickets belong on shows.html. To list a confirmed show here, add an <li> to the bill:
+
+        <li class="grid gap-1.5 py-5 sm:grid-cols-[9rem_1fr] sm:gap-x-6">
+          <p class="label stage-accent"><time datetime="YYYY-MM-DDTHH:MM">DAY DATE · TIME</time></p>
+          <div class="grid gap-1.5">
+            <h3 class="font-heading text-title-md">SHOW TITLE</h3>
+            <p class="text-meta font-medium">VENUE</p>
+            <p class="stage-muted">ONE-SENTENCE DESCRIPTION</p>
+          </div>
+        </li>
+    -->
+    <section class="section section-stage" aria-labelledby="shows-title">
+      <div class="container-site grid gap-y-10 md:grid-cols-12 md:items-center md:gap-x-8">
+        <div class="grid content-start gap-6 md:col-span-6 lg:col-span-5">
+          <div class="section-heading">
+            <p class="kicker">On stage</p>
+            <h2 class="section-title" id="shows-title">Upcoming shows</h2>
+            <p class="stage-muted">Every term ends in front of a live audience. Dates and tickets are on the Shows page.</p>
+          </div>
+          <figure>
+            <img class="aspect-[16/10] w-full rounded-md object-cover" src="assets/images/home1-shows-theatresports.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="Two teams of improvisers line up across a wide wooden stage during a theatresports match, with a musician at a keyboard on one side and a judges’ table on the other.">
+          </figure>
+        </div>
+
+        <div class="grid content-start gap-8 md:col-span-6 lg:col-start-7">
+          <ul class="divide-y divide-[var(--stage-line)] border-y stage-rule" aria-label="On the bill">
+            <li class="grid gap-1.5 py-5 sm:grid-cols-[9rem_1fr] sm:gap-x-6 md:grid-cols-1 lg:grid-cols-[9rem_1fr]">
+              <p class="label stage-accent sm:pt-1.5 md:pt-0 lg:pt-1.5">Every term</p>
+              <div class="grid gap-1.5">
+                <h3 class="font-heading text-title-lg">Class showcases</h3>
+                <p class="stage-muted">Each class ends its term with a short show.</p>
+              </div>
+            </li>
+            <li class="grid gap-1.5 py-5 sm:grid-cols-[9rem_1fr] sm:gap-x-6 md:grid-cols-1 lg:grid-cols-[9rem_1fr]">
+              <p class="label stage-accent sm:pt-1.5 md:pt-0 lg:pt-1.5">Improvised</p>
+              <div class="grid gap-1.5">
+                <h3 class="font-heading text-title-lg">Improv nights</h3>
+                <p class="stage-muted">Scenes made up on the spot from audience suggestions.</p>
+              </div>
+            </li>
+            <li class="grid gap-1.5 py-5 sm:grid-cols-[9rem_1fr] sm:gap-x-6 md:grid-cols-1 lg:grid-cols-[9rem_1fr]">
+              <p class="label stage-accent sm:pt-1.5 md:pt-0 lg:pt-1.5">Written in class</p>
+              <div class="grid gap-1.5">
+                <h3 class="font-heading text-title-lg">Sketch nights</h3>
+                <p class="stage-muted">Sketches from class, performed live for the first time.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a class="btn btn-primary btn-arrow w-fit" href="shows.html">
+            See Upcoming Shows
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. The community ================================================= -->
+    <section class="section" aria-labelledby="community-title">
+      <div class="container-site grid gap-x-8 gap-y-8 lg:grid-cols-12 lg:items-center">
+        <figure class="order-2 lg:order-1 lg:col-span-7">
+          <img class="aspect-[3/2] w-full rounded-md object-cover md:aspect-[16/9] lg:aspect-[3/2]" src="assets/images/home1-community-cast.jpg" width="1280" height="854" loading="lazy" decoding="async" alt="A comedy cast of about twenty people crowded together on stage, laughing, with several arms raised.">
+        </figure>
+
+        <div class="order-1 grid content-start gap-6 lg:order-2 lg:col-span-5">
+          <div class="section-heading">
+            <p class="kicker">The community</p>
+            <h2 class="section-title" id="community-title">A room that’s on your side</h2>
+            <p class="text-fg-soft">Warm up together, take risks together, cheer each other on at showtime. Nobody has to be the funny one.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <figure>
+              <img class="aspect-[4/3] w-full rounded-md object-cover" src="assets/images/home1-community-imaginary-ball.jpg" width="960" height="720" loading="lazy" decoding="async" alt="An actor in a workshop holds his hands up as if catching an invisible ball while a classmate smiles behind him.">
+            </figure>
+            <figure>
+              <img class="aspect-[4/3] w-full rounded-md object-cover" src="assets/images/home1-community-pile-up.jpg" width="1280" height="964" loading="lazy" decoding="async" alt="Performers in matching blue shirts lie piled on the floor of a classroom stage while two others stand over them.">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Your first scene starts here ================================== -->
+    <section class="section section-accent" aria-labelledby="cta-title">
+      <div class="container-site grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-x-8">
+        <div class="grid gap-3 lg:col-span-7">
+          <h2 class="section-title" id="cta-title">Your first scene starts here.</h2>
+          <p class="max-w-[30rem] text-lead leading-[1.6]">No experience needed. Just bring a willingness to say “yes, and”.</p>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:col-span-5 lg:justify-end">
+          <a class="btn btn-ink btn-arrow" href="classes.html">
+            Explore Classes
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+          <a class="btn btn-outline-ink" href="shows.html">See Upcoming Shows</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include partials/footer.html -->
+  <!-- @include partials/scroll-top.html -->
+</body>
+</html>

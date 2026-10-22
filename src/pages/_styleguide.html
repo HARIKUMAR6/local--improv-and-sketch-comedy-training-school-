@@ -1,0 +1,97 @@
+<!-- @page title="Style Guide" robots="noindex, nofollow" -->
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+  <!-- @include partials/head.html -->
+</head>
+<body>
+  <!-- @include partials/header.html -->
+
+  <!-- Development reference for shared components. Built by `npm run dev` only. -->
+  <main id="main" tabindex="-1">
+    <header class="page-intro">
+      <div class="container-site grid gap-4">
+        <p class="kicker">Design system</p>
+        <h1 class="page-title">Style guide</h1>
+        <p class="lead">Shared tokens and components. Use the header controls to check both themes and both text directions.</p>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="sg-colors">
+      <div class="container-site grid gap-6">
+        <h2 class="section-title" id="sg-colors">Colors</h2>
+        <ul class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <li class="grid gap-2"><span class="h-16 rounded-md border border-line bg-cream"></span><span class="text-sm">Warm Cream <code class="text-fg-muted">#F7F3EB</code></span></li>
+          <li class="grid gap-2"><span class="h-16 rounded-md bg-orange"></span><span class="text-sm">Comedy Orange <code class="text-fg-muted">#E96B3A</code></span></li>
+          <li class="grid gap-2"><span class="h-16 rounded-md border border-line bg-ink"></span><span class="text-sm">Ink Black <code class="text-fg-muted">#1C1B19</code></span></li>
+          <li class="grid gap-2"><span class="h-16 rounded-md border border-line bg-white"></span><span class="text-sm">White <code class="text-fg-muted">#FFFFFF</code></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sg-type">
+      <div class="container-site grid gap-5">
+        <h2 class="section-title" id="sg-type">Typography</h2>
+        <p class="font-heading text-display font-bold">Display</p>
+        <p class="page-title font-heading font-bold">Heading one</p>
+        <p class="section-title font-heading font-bold">Heading two</p>
+        <p class="font-heading text-h3 font-bold">Heading three</p>
+        <p class="lead">Lead paragraph in Inter. Improv is the craft of listening closely and building on whatever your scene partner gives you.</p>
+        <p class="max-w-prose">Body text in Inter, with an <a class="link" href="#sg-type">inline link</a> for reference.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sg-buttons">
+      <div class="container-site grid gap-6">
+        <h2 class="section-title" id="sg-buttons">Buttons</h2>
+        <div class="flex flex-wrap items-center gap-3">
+          <a class="btn btn-primary" href="#sg-buttons">Primary</a>
+          <button class="btn btn-secondary" type="button">Secondary</button>
+          <button class="btn btn-outline" type="button">Outline</button>
+          <button class="btn btn-ghost" type="button">Ghost</button>
+          <button class="btn btn-primary" type="button" disabled>Disabled</button>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <button class="btn btn-primary btn-sm" type="button">Small</button>
+          <button class="btn btn-primary" type="button">Default</button>
+          <button class="btn btn-primary btn-lg" type="button">Large <!-- @include assets/icons/arrow-right.svg --></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="sg-forms">
+      <div class="container-site grid gap-6">
+        <h2 class="section-title" id="sg-forms">Form controls</h2>
+        <form class="card grid max-w-xl gap-5" action="#" onsubmit="return false">
+          <div class="form-field">
+            <label class="form-label" for="sg-email">Email</label>
+            <input class="form-control" id="sg-email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="sg-email-hint">
+            <p class="form-hint" id="sg-email-hint">The address you registered with.</p>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="sg-password">Password</label>
+            <input class="form-control" id="sg-password" type="password" aria-invalid="true" aria-describedby="sg-password-error">
+            <p class="form-error" id="sg-password-error">Please enter your password.</p>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="sg-level">Experience level</label>
+            <select class="form-control" id="sg-level">
+              <option>Brand new</option>
+              <option>Some experience</option>
+              <option>Performing regularly</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="sg-notes">Notes</label>
+            <textarea class="form-control" id="sg-notes"></textarea>
+          </div>
+          <label class="form-check"><input type="checkbox"> Keep me signed in</label>
+          <button class="btn btn-primary btn-block" type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include partials/footer.html -->
+</body>
+</html>

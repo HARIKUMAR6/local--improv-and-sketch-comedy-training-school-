@@ -1,0 +1,18 @@
+{
+  "name": "The Bit Lab",
+  "tagline": "Improv & Sketch Comedy School",
+  "description": "Improv and sketch comedy classes for every level, plus live student shows. Learn to listen, play, and write funny with working comedians.",
+  "footerDescription": "An improv and sketch comedy school for curious beginners and working performers. We teach listening, collaboration, and writing, and then we put our students on stage.",
+  "social": {
+    "instagram": "https://www.instagram.com/",
+    "facebook": "https://www.facebook.com/",
+    "youtube": "https://www.youtube.com/",
+    "linkedin": "https://www.linkedin.com/"
+  },
+  "contact": {
+    "email": "",
+    "phone": "",
+    "address": "",
+    "mapEmbedUrl": "https://www.openstreetmap.org/export/embed.html?bbox=-87.6560%2C41.8740%2C-87.6080%2C41.8960&layer=mapnik"
+  }
+}

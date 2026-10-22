@@ -1,0 +1,234 @@
+<!-- @page title="Contact" nav="contact" description="Get in touch with our improv and sketch comedy school about classes, shows, and private workshops." -->
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+  <!-- @include partials/head.html -->
+  <script src="js/contact.js" defer></script>
+</head>
+<body>
+  <!-- @include partials/header.html -->
+
+  <!--
+    Contact: five sections.
+      1 Hero · 2 Get in touch · 3 Send us a message · 4 Find us · 5 Closing call to action
+    Email, phone, address and map come from site.json → contact and stay hidden while empty
+    (see README → Site settings). No contact details or location have been confirmed yet.
+    The form validates in the browser only; there is no backend, so nothing is sent.
+    The hero photo is from Wikimedia Commons; credits are listed in README → Image credits.
+  -->
+  <main class="contact-page" id="main" tabindex="-1">
+
+    <!-- 1. Hero ============================================================ -->
+    <section class="home-hero" aria-labelledby="contact-hero-title">
+      <div class="container-site grid gap-y-8 lg:grid-cols-12 lg:items-center lg:gap-x-8">
+        <div class="grid gap-6 lg:col-span-6">
+          <p class="kicker">Let’s connect</p>
+          <h1 class="font-heading text-hero" id="contact-hero-title">
+            Your next great scene <span class="text-accent-text">starts here.</span>
+          </h1>
+          <p class="lead max-w-[28rem]">Ask us about classes, shows, private workshops, or anything else on your mind.</p>
+          <a class="btn btn-primary btn-arrow mt-2 w-full sm:w-fit" href="classes.html">
+            Explore Classes
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+        </div>
+
+        <figure class="lg:col-span-6">
+          <img class="aspect-[4/3] w-full rounded-md object-cover md:aspect-[16/9] lg:aspect-[4/3]" src="assets/images/contact-hero-workshop.jpg" width="1600" height="900" fetchpriority="high"
+            alt="Adults sit in a loose circle on the wooden floor of a bright studio, watching and listening during a theatre workshop.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 2. Get in touch ==================================================== -->
+    <section class="section" aria-labelledby="touch-title">
+      <div class="container-site grid gap-x-8 gap-y-10 lg:grid-cols-12">
+        <div class="section-heading content-start lg:col-span-4">
+          <p class="kicker">Get in touch</p>
+          <h2 class="section-title" id="touch-title">What can we help with?</h2>
+          <p class="text-fg-soft">Pick a topic and we’ll start your message for you.</p>
+        </div>
+
+        <div class="grid content-start gap-8 lg:col-span-8">
+          <!-- Direct contact details: shown by js/contact.js once site.json → contact has values. -->
+          <dl class="contact-details gap-x-8 sm:grid-cols-2">
+            <div class="grid gap-1 border-t border-line py-5" data-contact-method="email" data-value="{{site.contact.email}}" hidden>
+              <dt class="label text-fg-muted">Email</dt>
+              <dd class="font-heading text-title-md break-words"><a class="link" data-contact-link></a></dd>
+            </div>
+            <div class="grid gap-1 border-t border-line py-5" data-contact-method="phone" data-value="{{site.contact.phone}}" hidden>
+              <dt class="label text-fg-muted">Phone</dt>
+              <dd class="font-heading text-title-md"><a class="link" data-contact-link></a></dd>
+            </div>
+          </dl>
+
+          <ul class="grid gap-x-8 sm:grid-cols-2">
+            <li class="grid content-start gap-1.5 border-t border-line py-6">
+              <p class="label text-accent-text">Classes</p>
+              <h3 class="font-heading text-title-md">Find the right level</h3>
+              <p class="text-fg-soft">Where to start, or where to go next.</p>
+              <a class="text-link btn-arrow w-fit" href="#message" data-enquiry="classes">
+                Ask about classes
+                <!-- @include assets/icons/arrow-right.svg -->
+              </a>
+            </li>
+            <li class="grid content-start gap-1.5 border-t border-line py-6">
+              <p class="label text-accent-text">Shows</p>
+              <h3 class="font-heading text-title-md">Catch a performance</h3>
+              <p class="text-fg-soft">Dates, venues, and tickets.</p>
+              <a class="text-link btn-arrow w-fit" href="#message" data-enquiry="shows">
+                Ask about shows
+                <!-- @include assets/icons/arrow-right.svg -->
+              </a>
+            </li>
+            <li class="grid content-start gap-1.5 border-t border-line py-6">
+              <p class="label text-accent-text">Private workshops</p>
+              <h3 class="font-heading text-title-md">Bring your group</h3>
+              <p class="text-fg-soft">An improv session for a group of your own.</p>
+              <a class="text-link btn-arrow w-fit" href="#message" data-enquiry="workshops">
+                Ask about workshops
+                <!-- @include assets/icons/arrow-right.svg -->
+              </a>
+            </li>
+            <li class="grid content-start gap-1.5 border-t border-line py-6">
+              <p class="label text-accent-text">Anything else</p>
+              <h3 class="font-heading text-title-md">Just say hello</h3>
+              <p class="text-fg-soft">Questions, ideas, or something we haven’t covered.</p>
+              <a class="text-link btn-arrow w-fit" href="#message" data-enquiry="general">
+                Send a message
+                <!-- @include assets/icons/arrow-right.svg -->
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Send us a message =============================================== -->
+    <section class="section section-alt" id="message" aria-labelledby="message-title">
+      <div class="container-site grid gap-x-8 gap-y-10 lg:grid-cols-12">
+        <div class="section-heading content-start lg:col-span-4">
+          <p class="kicker">Send us a message</p>
+          <h2 class="section-title" id="message-title">Tell us what you’re after</h2>
+          <p class="text-fg-soft">A few lines is plenty. All fields are required.</p>
+        </div>
+
+        <div class="grid content-start gap-6 lg:col-span-7 lg:col-start-6">
+          <form class="grid gap-6" action="#" method="post" novalidate data-contact-form aria-labelledby="message-title">
+            <div class="grid gap-6 sm:grid-cols-2">
+              <div class="form-field">
+                <label class="form-label" for="contact-name">Full name</label>
+                <input class="form-control" id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error">
+                <p class="form-error" id="contact-name-error" hidden></p>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="contact-email">Email address</label>
+                <input class="form-control" id="contact-email" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" required aria-describedby="contact-email-error">
+                <p class="form-error" id="contact-email-error" hidden></p>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="contact-topic">Enquiry type</label>
+              <select class="form-control" id="contact-topic" name="topic" required aria-describedby="contact-topic-error">
+                <option value="">Choose a topic</option>
+                <option value="classes">Classes</option>
+                <option value="shows">Performances and shows</option>
+                <option value="workshops">Private workshops</option>
+                <option value="general">General enquiry</option>
+              </select>
+              <p class="form-error" id="contact-topic-error" hidden></p>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="contact-message">Message</label>
+              <textarea class="form-control" id="contact-message" name="message" rows="6" maxlength="2000" required aria-describedby="contact-message-error"></textarea>
+              <p class="form-error" id="contact-message-error" hidden></p>
+            </div>
+
+            <button class="btn btn-primary w-full sm:w-fit" type="submit">Send message</button>
+          </form>
+
+          <div class="contact-status grid gap-1" role="status" tabindex="-1" data-form-status hidden>
+            <p class="font-heading text-title-md">Thanks, <span data-status-name></span>. Your message is complete.</p>
+            <p class="text-fg-soft">Online sending isn’t connected yet, so it hasn’t been delivered. We’ve cleared the form.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Find us ========================================================= -->
+    <!--
+      The map is created by js/contact.js from site.json → contact.mapEmbedUrl
+      (a Google Maps or OpenStreetMap embed URL). It currently shows a general city-centre
+      area, not the school's address; replace the URL once the address is confirmed and
+      drop the "general area" note. While the URL is empty, the visit topics are shown instead.
+    -->
+    <section class="section" aria-labelledby="find-title">
+      <div class="container-site grid gap-x-8 gap-y-10 lg:grid-cols-12">
+        <div class="section-heading content-start lg:col-span-4">
+          <p class="kicker">Find us</p>
+          <h2 class="section-title" id="find-title">Planning a visit?</h2>
+          <p class="text-fg-soft">Heading to a class or a show? Ask us and we’ll send directions.</p>
+          <p class="grid gap-1 border-t border-line pt-4" data-contact-method="address" data-value="{{site.contact.address}}" hidden>
+            <span class="label text-fg-muted">Address</span>
+            <span class="text-fg-soft" data-contact-text></span>
+          </p>
+        </div>
+
+        <div class="grid content-start gap-6 lg:col-span-7 lg:col-start-6">
+          <figure class="grid gap-3" data-map-figure hidden>
+            <div class="contact-map" data-map data-map-src="{{site.contact.mapEmbedUrl}}" data-map-title="Interactive map of the general area around {{site.name}}"></div>
+            <figcaption class="photo-caption mt-0">Map shows the general area. Ask us for exact directions to your class or show.</figcaption>
+          </figure>
+
+          <ul class="grid gap-x-8 border-b border-line sm:grid-cols-2" data-map-fallback>
+            <li class="grid gap-1 border-t border-line py-5">
+              <h3 class="font-heading text-title-md">Directions</h3>
+              <p class="text-fg-soft">How to get to your class or show.</p>
+            </li>
+            <li class="grid gap-1 border-t border-line py-5">
+              <h3 class="font-heading text-title-md">Where your class meets</h3>
+              <p class="text-fg-soft">The room and time for your course.</p>
+            </li>
+            <li class="grid gap-1 border-t border-line py-5">
+              <h3 class="font-heading text-title-md">Show venues</h3>
+              <p class="text-fg-soft">Where each performance takes place.</p>
+            </li>
+            <li class="grid gap-1 border-t border-line py-5">
+              <h3 class="font-heading text-title-md">Access needs</h3>
+              <p class="text-fg-soft">Tell us what would make your visit easier.</p>
+            </li>
+          </ul>
+          <a class="text-link btn-arrow w-fit" href="#message" data-enquiry="general">
+            Ask for directions
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Closing call to action ========================================= -->
+    <section class="section section-stage" aria-labelledby="contact-cta-title">
+      <div class="container-site grid gap-10">
+        <div class="grid gap-6 border-t-4 border-orange pt-8 lg:grid-cols-12 lg:items-end lg:gap-x-8 lg:pt-10">
+          <div class="grid gap-3 lg:col-span-8">
+            <p class="kicker">Curtain up</p>
+            <h2 class="section-title" id="contact-cta-title">Ready to take the stage?</h2>
+            <p class="stage-muted max-w-[30rem] text-lead leading-[1.6]">Find a class that fits where you are, from your first warm-up game onward.</p>
+          </div>
+          <div class="lg:col-span-4 lg:justify-self-end">
+            <a class="btn btn-primary btn-arrow w-full sm:w-fit" href="classes.html">
+              Explore Classes
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include partials/footer.html -->
+  <!-- @include partials/scroll-top.html -->
+</body>
+</html>

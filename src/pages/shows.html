@@ -1,0 +1,259 @@
+<!-- @page title="Shows" nav="shows" description="Live improv and sketch comedy shows featuring students, graduates, and house teams." -->
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+  <!-- @include partials/head.html -->
+</head>
+<body>
+  <!-- @include partials/header.html -->
+
+  <main class="shows-page" id="main" tabindex="-1">
+    <!--
+      Shows page sections:
+      1 Hero · 2 Upcoming shows · 3 Show types · 4 The live experience · 5 Student spotlights · 6 Closing call to action
+      Show formats match the bill on Home 1. No dates, venues or tickets are confirmed yet;
+      add them to section 2 using the template there. Photos are from Wikimedia Commons;
+      credits are listed in README → Image credits.
+    -->
+
+    <!-- 1. Hero: headline row above a full-bleed stage photograph ======== -->
+    <section class="shows-hero" aria-labelledby="shows-title">
+      <div class="container-site grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-8">
+        <div class="grid gap-5 lg:col-span-8">
+          <p class="kicker">Live at the school</p>
+          <h1 class="font-heading text-hero font-bold" id="shows-title">
+            <span class="hero-line">Unscripted nights.</span>
+            <span class="hero-line">Unforgettable moments.</span>
+          </h1>
+        </div>
+        <div class="grid gap-6 lg:col-span-4 lg:col-start-9 lg:pb-2">
+          <p class="lead">Improvised sets and sketch revues performed by our students, graduates, and house teams.</p>
+          <a class="btn btn-primary shows-arrow-down w-fit" href="#upcoming">
+            See upcoming shows
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+        </div>
+      </div>
+
+      <figure class="shows-hero-media mt-10 lg:mt-14">
+        <img src="assets/images/shows-hero-sketch.jpg" width="1600" height="1067" fetchpriority="high"
+          alt="A sketch comedy cast on a dark stage: four performers seated with scripts throw their heads back laughing as two more lean in behind them.">
+      </figure>
+    </section>
+
+    <!-- 2. Upcoming shows: featured night beside the rest of the bill ===== -->
+    <!--
+      To list a confirmed show, replace "To be announced" with real details, e.g.
+        <dd class="text-meta font-medium"><time datetime="YYYY-MM-DDTHH:MM">DAY DATE · TIME</time></dd>
+      and add a booking or enquiry link only when a real destination exists.
+    -->
+    <section class="section section-stage" id="upcoming" aria-labelledby="upcoming-title">
+      <div class="container-site">
+        <div class="grid gap-5 lg:grid-cols-12 lg:items-end lg:gap-x-8">
+          <div class="section-heading lg:col-span-7">
+            <p class="kicker">On the bill</p>
+            <h2 class="section-title" id="upcoming-title">Upcoming shows</h2>
+          </div>
+          <p class="stage-muted max-w-prose lg:col-span-5">Every term ends in front of a live audience. Confirmed dates, times, and venues will be listed here.</p>
+        </div>
+
+        <div class="mt-10 grid gap-12 lg:mt-14 lg:grid-cols-12 lg:gap-x-8">
+          <article class="grid content-start gap-5 lg:col-span-7" aria-labelledby="show-improv-nights">
+            <figure>
+              <img class="aspect-[3/2] w-full rounded-md object-cover" src="assets/images/shows-upcoming-improv-night.jpg" width="1280" height="853" loading="lazy" decoding="async"
+                alt="Four improvisers stand in a row on a stage with a black curtain, waiting to start a scene.">
+            </figure>
+            <div class="grid gap-2">
+              <p class="label stage-accent">Improvised</p>
+              <h3 class="font-heading text-title-lg font-bold" id="show-improv-nights">Improv nights</h3>
+              <p class="stage-muted">Scenes made up on the spot from audience suggestions.</p>
+            </div>
+            <dl class="grid grid-cols-2 gap-6 border-t stage-rule pt-4">
+              <div class="grid gap-1">
+                <dt class="label stage-muted">Date &amp; time</dt>
+                <dd class="text-meta font-medium">To be announced</dd>
+              </div>
+              <div class="grid gap-1">
+                <dt class="label stage-muted">Venue</dt>
+                <dd class="text-meta font-medium">To be announced</dd>
+              </div>
+            </dl>
+          </article>
+
+          <div class="grid content-start gap-8 lg:col-span-5">
+            <ol class="divide-y divide-[var(--stage-line)] border-y stage-rule">
+              <li class="flex items-start gap-5 py-6">
+                <div class="shows-date-slot" aria-hidden="true">
+                  <span class="label stage-muted">Date</span>
+                  <span class="font-heading text-title-md font-bold">TBA</span>
+                </div>
+                <div class="grid gap-1.5">
+                  <p class="label stage-accent">Every term</p>
+                  <h3 class="font-heading text-title-lg font-bold">Class showcases</h3>
+                  <p class="stage-muted">Each class ends its term with a short show.</p>
+                  <p class="sr-only">Date and venue to be announced.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-5 py-6">
+                <div class="shows-date-slot" aria-hidden="true">
+                  <span class="label stage-muted">Date</span>
+                  <span class="font-heading text-title-md font-bold">TBA</span>
+                </div>
+                <div class="grid gap-1.5">
+                  <p class="label stage-accent">Written in class</p>
+                  <h3 class="font-heading text-title-lg font-bold">Sketch nights</h3>
+                  <p class="stage-muted">Sketches from class, performed live for the first time.</p>
+                  <p class="sr-only">Date and venue to be announced.</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="grid gap-4">
+              <p class="stage-muted">Want to hear when dates are confirmed?</p>
+              <a class="btn btn-outline-stage w-fit" href="contact.html">Ask the team</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Show types: three formats, three image proportions ============ -->
+    <section class="section" aria-labelledby="types-title">
+      <div class="container-site">
+        <div class="section-heading">
+          <p class="kicker">Explore show types</p>
+          <h2 class="section-title" id="types-title">Pick your kind of funny</h2>
+        </div>
+
+        <div class="mt-10 grid gap-x-8 gap-y-12 lg:mt-14 lg:grid-cols-12">
+          <!-- Improv: tall portrait, text below -->
+          <article class="grid content-start gap-4 lg:col-span-5 lg:row-span-2">
+            <img class="aspect-square w-full rounded-md object-cover object-[25%_50%] lg:aspect-[4/5] lg:object-[35%_50%]" src="assets/images/shows-type-improv.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+              alt="Three improvisers on stage in front of a seated audience, one gesturing mid-scene.">
+            <div class="grid gap-1.5">
+              <p class="label text-accent-text">Made up on the spot</p>
+              <h3 class="font-heading text-title-lg font-bold">Improv comedy</h3>
+              <p class="text-fg-soft">No script, just a suggestion and performers who listen.</p>
+            </div>
+          </article>
+
+          <!-- Sketch: wide landscape, title and sentence side by side -->
+          <article class="grid content-start gap-4 lg:col-span-7">
+            <img class="aspect-[16/9] w-full rounded-md object-cover" src="assets/images/shows-type-sketch.jpg" width="1280" height="960" loading="lazy" decoding="async"
+              alt="A brightly lit revue stage with painted scenery, a performer in an orange suit at the microphone and a band playing behind.">
+            <div class="grid gap-1.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] sm:items-baseline sm:gap-x-6">
+              <div class="grid gap-1.5">
+                <p class="label text-accent-text">Written and rehearsed</p>
+                <h3 class="font-heading text-title-lg font-bold">Sketch comedy</h3>
+              </div>
+              <p class="text-fg-soft">Original sketches, written in class and played for a live room.</p>
+            </div>
+          </article>
+
+          <!-- Showcases: square image with text beside it -->
+          <article class="grid content-start gap-4 sm:grid-cols-2 sm:items-end sm:gap-x-6 lg:col-span-7">
+            <img class="aspect-square w-full rounded-md object-cover" src="assets/images/shows-type-showcase.jpg" width="1232" height="816" loading="lazy" decoding="async"
+              alt="A group of student performers on a dark stage, chatting as they take their places.">
+            <div class="grid gap-1.5 sm:pb-1">
+              <p class="label text-accent-text">Every term</p>
+              <h3 class="font-heading text-title-lg font-bold">Student showcases</h3>
+              <p class="text-fg-soft">Each class ends its term on stage.</p>
+            </div>
+          </article>
+        </div>
+
+        <a class="text-link btn-arrow mt-10 lg:mt-12" href="classes.html">
+          Learn the craft behind every show
+          <!-- @include assets/icons/arrow-right.svg -->
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. The live experience: a photo-led mosaic ====================== -->
+    <section class="section section-alt" aria-labelledby="live-title">
+      <div class="container-site">
+        <div class="grid gap-5 lg:grid-cols-12 lg:items-end lg:gap-x-8">
+          <div class="section-heading lg:col-span-7">
+            <p class="kicker">The live experience</p>
+            <h2 class="section-title" id="live-title">Close enough to see every choice land</h2>
+          </div>
+          <p class="max-w-prose text-fg-soft lg:col-span-5">Every improvised scene happens once, in front of the people who came to see it.</p>
+        </div>
+
+        <div class="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-12">
+          <figure class="sm:col-span-2 lg:col-span-7 lg:row-span-2">
+            <img class="aspect-[3/2] w-full rounded-md object-cover lg:aspect-auto lg:h-[calc(100%-3.25rem)]" src="assets/images/shows-live-outdoor-crowd.jpg" width="1600" height="1045" loading="lazy" decoding="async"
+              alt="Improvisers play a scene on a small outdoor stage in front of a huge crowd sitting on a grassy slope.">
+          </figure>
+          <figure class="lg:col-span-5">
+            <img class="aspect-square w-full rounded-md object-cover object-[10%_50%]" src="assets/images/shows-live-seated-scene.jpg" width="1280" height="853" loading="lazy" decoding="async"
+              alt="Two performers seated facing each other in a scene, watched by a packed audience in the foreground.">
+          </figure>
+          <figure class="lg:col-span-5">
+            <img class="aspect-square w-full rounded-md object-cover lg:aspect-[16/10]" src="assets/images/shows-live-close-up.jpg" width="1280" height="854" loading="lazy" decoding="async"
+              alt="A performer in white face paint throws his arms wide inches from smiling audience members.">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Student spotlights: from the rehearsal room to the stage ====== -->
+    <!--
+      Student spotlights: add verified performer stories here (with each person's permission), e.g.
+        <figure>
+          <img src=PORTRAIT_PATH alt="NAME performing in SHOW">
+          <figcaption><span class="label">NAME</span> ONE-SENTENCE STORY</figcaption>
+        </figure>
+    -->
+    <section class="section" aria-labelledby="spotlight-title">
+      <div class="container-site grid gap-x-8 gap-y-10 lg:grid-cols-12 lg:items-center">
+        <div class="grid content-start gap-8 lg:col-span-5">
+          <div class="section-heading">
+            <p class="kicker">Student spotlights</p>
+            <h2 class="section-title" id="spotlight-title">From the rehearsal room to the spotlight</h2>
+            <p class="text-fg-soft">Students perform while they’re still learning, with graduates and house teams on the same bill.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <figure>
+              <img class="aspect-[4/5] w-full rounded-md object-cover" src="assets/images/shows-spotlight-floor-work.jpg" width="1280" height="853" loading="lazy" decoding="async"
+                alt="A student rolls across a wooden rehearsal floor during a movement exercise.">
+            </figure>
+            <figure class="mt-10">
+              <img class="aspect-[4/5] w-full rounded-md object-cover" src="assets/images/shows-spotlight-rehearsal.jpg" width="1280" height="853" loading="lazy" decoding="async"
+                alt="A student kneels with his head to the floor, deep in a rehearsal exercise.">
+            </figure>
+          </div>
+        </div>
+
+        <figure class="lg:col-span-7">
+          <img class="aspect-[4/3] w-full rounded-md object-cover lg:aspect-[5/4]" src="assets/images/shows-spotlight-ensemble.jpg" width="1232" height="816" loading="lazy" decoding="async"
+            alt="A comedy ensemble of about fourteen young performers posing together on a black stage, some kneeling at the front.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 6. Closing call to action ======================================= -->
+    <section class="section section-accent" aria-labelledby="shows-cta-title">
+      <div class="container-site">
+        <div class="grid gap-8 border-t-4 border-ink pt-8 lg:grid-cols-12 lg:items-end lg:gap-x-8 lg:pt-10">
+          <div class="grid gap-4 lg:col-span-7">
+            <p class="label">Your turn</p>
+            <h2 class="font-heading text-h1 font-bold" id="shows-cta-title">Want to be up there next?</h2>
+          </div>
+          <div class="grid gap-6 lg:col-span-5 lg:pb-2">
+            <p class="text-lead">Every show on this page starts in a class. Find the one that fits you.</p>
+            <a class="btn btn-ink btn-arrow w-fit" href="classes.html">
+              Explore Classes
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include partials/footer.html -->
+  <!-- @include partials/scroll-top.html -->
+</body>
+</html>

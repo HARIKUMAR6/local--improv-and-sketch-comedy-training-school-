@@ -1,0 +1,1343 @@
+/*
+ * Main stylesheet — compiled by the Tailwind CLI into dist/css/main.css.
+ *
+ * 1. Design tokens   brand palette + theme-aware semantic colors, type, spacing, radius, motion
+ * 2. Theme values    light (default) and dark, switched with <html data-theme="dark">
+ * 3. Base styles
+ * 4. Components      layout, buttons, links, forms, header, footer
+ *
+ * Utilities always win over components, so `class="btn btn-primary w-full"` works as expected.
+ * Layout uses logical properties (inline/block, start/end) so RTL works without overrides.
+ */
+
+/* Only scan src/ for class names (not dist/ or node_modules/). */
+@import "tailwindcss" source("..");
+
+/* Page-specific styles (scoped class names, see each file's header). */
+@import "./home-2.css";
+@import "./shows.css";
+@import "./contact.css";
+@import "./dashboard.css";
+
+/* -------------------------------------------------------------------------- */
+/* 1. Design tokens                                                           */
+/* -------------------------------------------------------------------------- */
+
+@theme {
+  /* Brand palette. The default Tailwind palette is removed to keep colors on-brand. */
+  --color-*: initial;
+  --color-cream: #f7f3eb;
+  --color-orange: #e96b3a;
+  --color-ink: #1c1b19;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-*: initial;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Fluid type scale: text-display, text-h1, text-h2, text-h3, text-lead */
+  --text-display: clamp(2.5rem, 1.6rem + 4.5vw, 4.75rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-h1: clamp(2.125rem, 1.6rem + 2.6vw, 3.5rem);
+  --text-h1--line-height: 1.06;
+  --text-h1--letter-spacing: -0.03em;
+  --text-h2: clamp(1.75rem, 1.4rem + 1.75vw, 2.75rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.025em;
+  --text-h3: clamp(1.25rem, 1.125rem + 0.6vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.015em;
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-lead--line-height: 1.6;
+
+  /* Home page scale: text-hero (38→68px), text-title-lg (22→28px), text-title-md (19→22px),
+     text-meta (14px) for labels and details, text-caption (13px) for photo captions. */
+  --text-hero: clamp(2.375rem, 1.55rem + 3.5vw, 4.25rem);
+  --text-hero--line-height: 1.04;
+  --text-hero--letter-spacing: -0.03em;
+  --text-title-lg: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
+  --text-title-lg--line-height: 1.15;
+  --text-title-lg--letter-spacing: -0.02em;
+  --text-title-md: clamp(1.1875rem, 1.125rem + 0.3vw, 1.375rem);
+  --text-title-md--line-height: 1.25;
+  --text-title-md--letter-spacing: -0.015em;
+  --text-meta: 0.875rem;
+  --text-meta--line-height: 1.45;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.45;
+
+  /* Layout spacing (Tailwind's 0.25rem scale stays available) */
+  --spacing-gutter: clamp(1rem, 0.4rem + 2.6vw, 2.5rem); /* px-gutter */
+  --spacing-section: clamp(3.5rem, 2.5rem + 5vw, 7rem); /* py-section */
+  --spacing-header: 4.5rem; /* h-header */
+  --spacing-control: 2.75rem; /* size-control: 44px touch target */
+
+  /* Max widths: max-w-site, max-w-prose */
+  --container-site: 78rem;
+  --container-prose: 40rem;
+
+  /* Radius: small and consistent; no oversized rounding */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem; /* buttons, inputs, header controls */
+  --radius-md: 0.625rem; /* cards and panels */
+  --radius-lg: 1rem;
+
+  /* Shadows are used sparingly */
+  --shadow-sm: 0 1px 2px rgb(28 27 25 / 0.06);
+  --shadow-md: 0 1px 2px rgb(28 27 25 / 0.06), 0 10px 30px -12px rgb(28 27 25 / 0.2);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-duration: 160ms;
+  --default-transition-timing-function: var(--ease-out);
+}
+
+/* Semantic, theme-aware colors → bg-page, text-fg, border-line, text-accent-text, ... */
+@theme inline {
+  --color-page: var(--theme-page);
+  --color-page-alt: var(--theme-page-alt);
+  --color-surface: var(--theme-surface);
+  --color-fg: var(--theme-fg);
+  --color-fg-soft: var(--theme-fg-soft);
+  --color-fg-muted: var(--theme-fg-muted);
+  --color-line: var(--theme-line);
+  --color-line-strong: var(--theme-line-strong);
+  --color-accent: var(--theme-accent);
+  --color-accent-hover: var(--theme-accent-hover);
+  --color-on-accent: var(--theme-on-accent);
+  --color-accent-text: var(--theme-accent-text);
+  --color-accent-soft: var(--theme-accent-soft);
+  --color-danger: var(--theme-danger);
+  --color-success: var(--theme-success);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Theme values                                                            */
+/* -------------------------------------------------------------------------- */
+/* Contrast (WCAG): every text pairing below is at least 4.5:1, borders and focus rings at least 3:1. */
+
+:root {
+  color-scheme: light;
+  --theme-page: var(--color-cream);
+  --theme-page-alt: #efe7d8;
+  --theme-surface: var(--color-white);
+  --theme-fg: var(--color-ink);
+  --theme-fg-soft: #45423c;
+  --theme-fg-muted: #625e56;
+  --theme-line: #e3dacb;
+  --theme-line-strong: #857e72;
+  --theme-accent: var(--color-orange);
+  --theme-accent-hover: #f07c4e;
+  --theme-on-accent: var(--color-ink);
+  --theme-accent-text: #b4461b;
+  --theme-accent-soft: #fbe2d5;
+  --theme-danger: #b42318;
+  --theme-success: #1e7a4c;
+  --theme-focus: var(--color-ink);
+
+  /* The footer is a dark band in both themes. */
+  --footer-bg: var(--color-ink);
+  --footer-fg: var(--color-cream);
+  --footer-muted: #bdb6a9;
+  --footer-line: #3a3732;
+
+  /* Dark "stage" band used for the shows section, in both themes. */
+  --stage-bg: var(--color-ink);
+  --stage-fg: var(--color-cream);
+  --stage-muted: #bdb6a9;
+  --stage-line: #3a3732;
+  --stage-accent: #f08a5e;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --theme-page: var(--color-ink);
+  --theme-page-alt: #23211e;
+  --theme-surface: #262420;
+  --theme-fg: var(--color-cream);
+  --theme-fg-soft: #d6cfc2;
+  --theme-fg-muted: #a39c8f;
+  --theme-line: #353230;
+  --theme-line-strong: #7c766b;
+  --theme-accent: var(--color-orange);
+  --theme-accent-hover: #f07c4e;
+  --theme-on-accent: var(--color-ink);
+  --theme-accent-text: #f08a5e;
+  --theme-accent-soft: #3b261c;
+  --theme-danger: #f47b6e;
+  --theme-success: #5fc28f;
+  --theme-focus: var(--color-orange);
+
+  --footer-bg: #131210;
+  --footer-fg: var(--color-cream);
+  --footer-muted: #a39c8f;
+  --footer-line: #2e2c28;
+
+  --stage-bg: #131210;
+  --stage-fg: var(--color-cream);
+  --stage-muted: #b3ac9f;
+  --stage-line: #34312c;
+  --stage-accent: #f08a5e;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. Base                                                                    */
+/* -------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--spacing-header) + 1rem);
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: clip;
+    background-color: var(--color-page);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  /* <main tabindex="-1"> receives focus from the skip link; no ring needed there. */
+  main:focus {
+    outline: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+  }
+
+  ::selection {
+    background-color: var(--color-orange);
+    color: var(--color-ink);
+  }
+
+  /* Global, visible keyboard focus. */
+  :focus-visible {
+    outline: 2px solid var(--theme-focus);
+    outline-offset: 3px;
+  }
+
+  /* Hide JavaScript-only controls when scripts are unavailable. */
+  .no-js [data-requires-js] {
+    display: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. Components                                                              */
+/* -------------------------------------------------------------------------- */
+
+@layer components {
+  /* ---- Layout ------------------------------------------------------------ */
+
+  .container-site {
+    width: 100%;
+    max-width: calc(var(--container-site) + 2 * var(--spacing-gutter));
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  .section {
+    padding-block: var(--spacing-section);
+  }
+
+  .section + .section {
+    padding-block-start: 0;
+  }
+
+  .section-alt {
+    background-color: var(--color-page-alt);
+  }
+
+  .section-alt + .section,
+  .section + .section-alt {
+    padding-block-start: var(--spacing-section);
+  }
+
+  /* Opening block of every page: title and a short introduction. */
+  .page-intro {
+    padding-block: clamp(3rem, 2rem + 4vw, 5.5rem) clamp(2.5rem, 2rem + 2.5vw, 4rem);
+    border-block-end: 1px solid var(--color-line);
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-block-start: 0.75rem;
+    inset-inline-start: 0.75rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-fg);
+    color: var(--color-page);
+    font-weight: 600;
+    transform: translateY(-200%);
+    transition: transform 150ms var(--ease-out);
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  /* ---- Headings & text --------------------------------------------------- */
+
+  .section-heading {
+    display: grid;
+    gap: 1rem;
+    max-width: var(--container-prose);
+  }
+
+  .kicker {
+    color: var(--color-accent-text);
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .page-title {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+    letter-spacing: var(--text-h1--letter-spacing);
+  }
+
+  .section-title {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    letter-spacing: var(--text-h2--letter-spacing);
+  }
+
+  .lead {
+    max-width: var(--container-prose);
+    color: var(--color-fg-soft);
+    font-size: var(--text-lead);
+    line-height: var(--text-lead--line-height);
+  }
+
+  /* Inline text link */
+  .link {
+    color: var(--color-accent-text);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    transition: color var(--default-transition-duration);
+  }
+
+  .link:hover {
+    color: var(--color-fg);
+    text-decoration-thickness: 2px;
+  }
+
+  /* ---- Buttons ----------------------------------------------------------- */
+  /* One height scale shared with form controls: sm 40px · default 48px · lg 56px. */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.5rem 1.375rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.1;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition-property: background-color, border-color, color;
+    transition-duration: var(--default-transition-duration);
+  }
+
+  .btn svg {
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .btn-sm {
+    min-height: 2.5rem;
+    padding-inline: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .btn-lg {
+    min-height: 3.5rem;
+    padding-inline: 1.75rem;
+    font-size: 1.0625rem;
+  }
+
+  .btn-block {
+    width: 100%;
+  }
+
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-fg);
+    color: var(--color-page);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-fg-soft);
+  }
+
+  .btn-outline {
+    border-color: var(--color-fg);
+    color: var(--color-fg);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-fg);
+    color: var(--color-page);
+  }
+
+  .btn-ghost {
+    color: var(--color-fg);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-page-alt);
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Square, icon-only button (theme toggle, menu toggle). Always give it an aria-label. */
+  .icon-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--spacing-control);
+    height: var(--spacing-control);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--color-fg);
+    cursor: pointer;
+    transition-property: background-color, border-color;
+    transition-duration: var(--default-transition-duration);
+  }
+
+  .icon-btn:hover {
+    border-color: var(--color-line-strong);
+    background-color: var(--color-page-alt);
+  }
+
+  .icon-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* ---- Cards ------------------------------------------------------------- */
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+  }
+
+  /* ---- Forms ------------------------------------------------------------- */
+
+  .form-field {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    color: var(--color-fg);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .form-control {
+    display: block;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    color: var(--color-fg);
+    font-size: 1rem; /* 16px prevents iOS zoom on focus */
+    line-height: 1.5;
+    transition-property: border-color, box-shadow;
+    transition-duration: var(--default-transition-duration);
+  }
+
+  .form-control::placeholder {
+    color: var(--color-fg-muted);
+    opacity: 1;
+  }
+
+  .form-control:hover {
+    border-color: var(--color-fg-soft);
+  }
+
+  .form-control:focus-visible {
+    border-color: var(--color-fg);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+
+  .form-control[aria-invalid="true"] {
+    border-color: var(--color-danger);
+  }
+
+  .form-control:disabled {
+    background-color: var(--color-page-alt);
+    color: var(--color-fg-muted);
+    cursor: not-allowed;
+  }
+
+  textarea.form-control {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  select.form-control {
+    appearance: none;
+    padding-inline-end: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23857e72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 8 5 5 5-5'/%3E%3C/svg%3E");
+    background-position: right 0.875rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+  }
+
+  [dir="rtl"] select.form-control {
+    background-position: left 0.875rem center;
+  }
+
+  .form-hint {
+    color: var(--color-fg-muted);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .form-error {
+    color: var(--color-danger);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .form-check input {
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-block-start: 0.1875rem;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+  }
+
+  /* ---- Header ------------------------------------------------------------ */
+
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 50;
+    border-block-end: 1px solid var(--color-line);
+    background-color: var(--color-page);
+  }
+
+  .brand {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.625rem;
+    min-height: var(--spacing-control);
+    color: inherit;
+    font-family: var(--font-heading);
+    font-size: 1.1875rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .brand-mark {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: var(--spacing-control);
+    cursor: pointer;
+    color: var(--color-fg-soft);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--default-transition-duration);
+  }
+
+  /* Current-page marker: a short accent rule under the label. */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0.4375rem;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .nav-link:hover {
+    color: var(--color-fg);
+  }
+
+  .nav-link[aria-current="page"] {
+    color: var(--color-fg);
+  }
+
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Each nav item is as tall as the header so a dropdown can hang from its bottom edge. */
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* The Home trigger shows the current-page marker when one of its pages is open. */
+  .nav-item:has([aria-current="page"]) > .nav-trigger {
+    color: var(--color-fg);
+  }
+
+  .nav-item:has([aria-current="page"]) > .nav-trigger::after {
+    transform: scaleX(1);
+  }
+
+  .nav-trigger:hover,
+  .nav-trigger[aria-expanded="true"] {
+    color: var(--color-fg);
+  }
+
+  .chevron {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    transition: rotate var(--default-transition-duration) var(--ease-out);
+  }
+
+  [aria-expanded="true"] > .chevron {
+    rotate: 180deg;
+  }
+
+  /* Desktop dropdown, centered under its trigger (symmetrical, so identical in LTR and RTL). */
+  .nav-dropdown {
+    position: absolute;
+    inset-block-start: calc(100% + 0.5rem);
+    left: 50%;
+    z-index: 60;
+    min-width: 11rem;
+    padding: 0.375rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    translate: -50% 0;
+    /* Visibility flips instantly on open (so focus can move in) and after the fade on close. */
+    transition-property: opacity, translate, visibility;
+    transition-duration: 150ms, 150ms, 0s;
+    transition-delay: 0s, 0s, 150ms;
+    transition-timing-function: var(--ease-out);
+  }
+
+  .nav-dropdown[data-open="true"] {
+    transition-delay: 0s;
+  }
+
+  /* Keeps the pointer inside the item while it crosses the gap to the panel. */
+  .nav-dropdown::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: -0.5rem;
+    height: 0.5rem;
+  }
+
+  .js [data-disclosure-panel][data-open="false"] {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .js .nav-dropdown[data-open="false"] {
+    translate: -50% -0.25rem;
+  }
+
+  .dropdown-link {
+    display: flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding-inline: 0.75rem;
+    border-radius: var(--radius-xs);
+    color: var(--color-fg-soft);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition-property: background-color, color;
+    transition-duration: var(--default-transition-duration);
+  }
+
+  .dropdown-link:hover {
+    background-color: var(--color-page-alt);
+    color: var(--color-fg);
+  }
+
+  .dropdown-link[aria-current="page"] {
+    background-color: var(--color-accent-soft);
+    color: var(--color-fg);
+  }
+
+  /* Without JavaScript the dropdown trigger is dropped and its links sit inline in the navigation. */
+  .no-js .nav-trigger {
+    display: none;
+  }
+
+  .no-js .nav-dropdown {
+    position: static;
+    display: flex;
+    gap: 1.5rem;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    translate: none;
+  }
+
+  .no-js .nav-dropdown::before {
+    display: none;
+  }
+
+  .no-js .dropdown-link {
+    min-height: var(--spacing-control);
+    padding-inline: 0;
+  }
+
+  /* Theme toggle: the icon shows the theme you will switch to. */
+  .theme-icon-sun {
+    display: none;
+  }
+
+  [data-theme="dark"] .theme-icon-sun {
+    display: block;
+  }
+
+  [data-theme="dark"] .theme-icon-moon {
+    display: none;
+  }
+
+  /* Direction control: two compact text segments; the active one is filled. */
+  .dir-switch {
+    display: inline-flex;
+    flex-shrink: 0;
+    height: var(--spacing-control);
+    padding: 0.1875rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+  }
+
+  .dir-switch button {
+    min-width: 2.5rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--radius-xs);
+    color: var(--color-fg-muted);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition-property: background-color, color;
+    transition-duration: var(--default-transition-duration);
+  }
+
+  .dir-switch button:hover {
+    color: var(--color-fg);
+  }
+
+  /* Active state follows <html dir>, so it is correct before scripts run. */
+  :root:not([dir="rtl"]) .dir-switch [data-dir-option="ltr"],
+  [dir="rtl"] .dir-switch [data-dir-option="rtl"] {
+    background-color: var(--color-fg);
+    color: var(--color-page);
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 1.5rem;
+    background-color: var(--color-line);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-icon-open,
+  .menu-toggle[aria-expanded="false"] .menu-icon-close {
+    display: none;
+  }
+
+  /* Mobile menu panel: drops down below the sticky header. */
+  .mobile-menu {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    height: calc(100vh - var(--spacing-header));
+    height: calc(100dvh - var(--spacing-header));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-block-start: 1px solid var(--color-line);
+    background-color: var(--color-page);
+    transition-property: opacity, transform, visibility;
+    transition-duration: 200ms;
+    transition-timing-function: var(--ease-out);
+  }
+
+  .js .mobile-menu[data-open="false"] {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+
+  /* Without JavaScript the menu renders inline below the header bar. */
+  .no-js .mobile-menu {
+    position: static;
+    height: auto;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.5rem;
+    padding-block: 0.625rem;
+    border-block-end: 1px solid var(--color-line);
+    color: var(--color-fg);
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .mobile-nav-index {
+    min-width: 1.75rem;
+    color: var(--color-fg-muted);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mobile-nav-link svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-inline-start: auto;
+    color: var(--color-fg-muted);
+    transition: translate var(--default-transition-duration) var(--ease-out);
+  }
+
+  [dir="rtl"] .mobile-nav-link svg {
+    scale: -1 1;
+  }
+
+  .mobile-nav-link:hover svg {
+    translate: 0.25rem 0;
+  }
+
+  [dir="rtl"] .mobile-nav-link:hover svg {
+    translate: -0.25rem 0;
+  }
+
+  .mobile-nav-link[aria-current="page"],
+  .mobile-nav-link[aria-current="page"] .mobile-nav-index,
+  .mobile-nav-link[aria-current="page"] svg {
+    color: var(--color-accent-text);
+  }
+
+  /* Mobile "Home" accordion: the trigger is a button styled like the other rows. */
+  .mobile-nav-trigger {
+    width: 100%;
+    cursor: pointer;
+    text-align: start;
+  }
+
+  .mobile-nav-trigger:hover svg,
+  [dir="rtl"] .mobile-nav-trigger:hover svg {
+    translate: none;
+  }
+
+  .mobile-nav-trigger:has(+ .mobile-subnav [aria-current="page"]) {
+    color: var(--color-accent-text);
+  }
+
+  .mobile-nav-trigger:has(+ .mobile-subnav [aria-current="page"]) .mobile-nav-index,
+  .mobile-nav-trigger:has(+ .mobile-subnav [aria-current="page"]) svg {
+    color: var(--color-accent-text);
+  }
+
+  .js .mobile-subnav[data-open="false"] {
+    display: none;
+  }
+
+  .mobile-subnav-link {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    /* Aligns with the row titles: index width (1.75rem) + gap (1rem). */
+    padding-inline: 2.75rem 0;
+    border-block-end: 1px solid var(--color-line);
+    color: var(--color-fg-soft);
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .mobile-subnav-link:hover {
+    color: var(--color-fg);
+  }
+
+  .mobile-subnav-link[aria-current="page"] {
+    color: var(--color-accent-text);
+  }
+
+  /* Prevents background scrolling while the mobile menu is open. */
+  .menu-open {
+    overflow: hidden;
+  }
+
+  /* ---- Footer ------------------------------------------------------------ */
+
+  .site-footer {
+    --theme-focus: var(--color-orange);
+    background-color: var(--footer-bg);
+    color: var(--footer-fg);
+  }
+
+  .footer-text {
+    color: var(--footer-muted);
+  }
+
+  .footer-heading {
+    color: var(--footer-fg);
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    color: var(--footer-muted);
+    text-decoration: none;
+    transition: color var(--default-transition-duration);
+  }
+
+  .footer-link:hover {
+    color: var(--footer-fg);
+    text-decoration: underline;
+    text-decoration-color: var(--color-orange);
+    text-decoration-thickness: 2px;
+  }
+
+  /* One of the three link/contact groups beside the brand; wraps onto its own
+     row once there isn't room beside the others. */
+  .footer-group {
+    flex: 1 1 10rem;
+    min-width: 8rem;
+  }
+
+  /* "Get in Touch" has no fixed heading of its own: it collapses entirely
+     (heading included) while every row inside stays hidden, i.e. while
+     site.json → contact has no verified email, phone or address. Works with
+     or without JavaScript, since it only depends on the `hidden` attribute
+     that js/main.js (initContactDetails) removes per row. */
+  [data-footer-contact]:not(:has(li:not([hidden]))) {
+    display: none;
+  }
+
+  .footer-rule {
+    border-block-start: 1px solid var(--footer-line);
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--spacing-control);
+    height: var(--spacing-control);
+    border: 1px solid var(--footer-line);
+    border-radius: var(--radius-sm);
+    color: var(--footer-fg);
+    transition-property: background-color, border-color, color;
+    transition-duration: var(--default-transition-duration);
+  }
+
+  .social-link:hover {
+    border-color: var(--color-orange);
+    background-color: var(--color-orange);
+    color: var(--color-ink);
+  }
+
+  .social-link svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  /* ---- Scroll to top ------------------------------------------------------ */
+  /* Fixed, icon-only control. Bottom-end corner (right in LTR, left in RTL via
+     the logical `end` inset), above page content but below the sticky header
+     and mobile menu. js/main.js toggles [data-visible] on scroll position and
+     footer visibility; transitioning `visibility` keeps it out of tab order
+     and off-screen readers while hidden. */
+  .scroll-top-btn {
+    position: fixed;
+    inset-block-end: clamp(1.25rem, 1rem + 1vw, 2rem);
+    inset-inline-end: clamp(1.25rem, 1rem + 1vw, 2rem);
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--spacing-control);
+    height: var(--spacing-control);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition-property: opacity, translate, visibility, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: var(--ease-out);
+  }
+
+  .scroll-top-btn:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .scroll-top-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .js [data-scroll-top][data-visible="false"] {
+    visibility: hidden;
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+
+  /* ---- Section bands ----------------------------------------------------- */
+
+  /* Dark band for performance content; keeps its own palette in both themes. */
+  .section-stage {
+    --theme-focus: var(--color-orange);
+    border-block: 1px solid var(--stage-line);
+    background-color: var(--stage-bg);
+    color: var(--stage-fg);
+  }
+
+  /* Closing call to action on solid brand orange; text stays ink in both themes. */
+  .section-accent {
+    --theme-focus: var(--color-ink);
+    background-color: var(--color-orange);
+    color: var(--color-ink);
+  }
+
+  .section + .section-stage,
+  .section-stage + .section,
+  .section + .section-accent {
+    padding-block-start: var(--spacing-section);
+  }
+
+  .stage-muted {
+    color: var(--stage-muted);
+  }
+
+  .stage-accent {
+    color: var(--stage-accent);
+  }
+
+  .stage-rule {
+    border-color: var(--stage-line);
+  }
+
+  .section-stage .kicker {
+    color: var(--stage-accent);
+  }
+
+  /* Outline button for dark and orange bands, where the theme colors do not apply. */
+  .btn-outline-stage {
+    border-color: var(--stage-fg);
+    color: var(--stage-fg);
+  }
+
+  .btn-outline-stage:hover {
+    background-color: var(--stage-fg);
+    color: var(--color-ink);
+  }
+
+  .btn-ink {
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+  }
+
+  .btn-ink:hover {
+    background-color: #3a3732;
+  }
+
+  .btn-outline-ink {
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  .btn-outline-ink:hover {
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+  }
+
+  /* Arrow icons point in the reading direction. */
+  [dir="rtl"] .btn-arrow svg,
+  [dir="rtl"] .text-link svg {
+    scale: -1 1;
+  }
+
+  /* ---- Home ------------------------------------------------------------- */
+
+  /* Home 1, Classes and About use a tighter section rhythm than the other pages: 48px on phones to 80px on desktop.
+     Their heroes share .home-hero padding, so inner-page heroes keep the same proportions. */
+  .home-1,
+  .classes-page,
+  .about-page {
+    --spacing-section: clamp(3rem, 2.25rem + 3vw, 5rem);
+  }
+
+  .home-hero {
+    padding-block: clamp(2rem, 1.25rem + 3vw, 4rem) var(--spacing-section);
+  }
+
+  /* Each sentence of the hero heading is its own balanced line group. */
+  .hero-line {
+    display: block;
+  }
+
+  /* Text link with a trailing arrow, used for secondary actions inside sections. */
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: var(--spacing-control);
+    color: inherit;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-orange);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+    transition: text-decoration-color var(--default-transition-duration);
+  }
+
+  .text-link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .text-link svg {
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  /* Small caption under a photo or embed (e.g. the Contact page map). Image
+     license credits live in README → Image credits, not in page content. */
+  .photo-caption {
+    margin-block-start: 0.75rem;
+    color: var(--color-fg-muted);
+    font-size: var(--text-caption);
+    line-height: var(--text-caption--line-height);
+  }
+
+  .section-stage .photo-caption {
+    color: var(--stage-muted);
+  }
+
+  /* Small uppercase label above a title (speciality, show cadence). */
+  .label {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  /* The "&" joining the two class tracks. */
+  .craft-amp {
+    color: var(--color-accent-text);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 2.25rem + 3vw, 5rem);
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  /* ---- FAQ accordion ----------------------------------------------------- */
+  /* Uses the shared [data-disclosure] script; without JavaScript every answer stays visible. */
+
+  .faq-item {
+    border-block-end: 1px solid var(--color-line);
+  }
+
+  .faq-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+    min-height: 3.5rem;
+    padding-block: 1.125rem;
+    color: var(--color-fg);
+    font-family: var(--font-heading);
+    font-size: var(--text-title-md);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    text-align: start;
+    cursor: pointer;
+    transition: color var(--default-transition-duration);
+  }
+
+  .faq-trigger:hover {
+    color: var(--color-accent-text);
+  }
+
+  /* Plus that turns into a minus when the answer is open. */
+  .faq-icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    color: var(--color-accent-text);
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: calc(50% - 1px);
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transition: rotate 200ms var(--ease-out);
+  }
+
+  .faq-icon::after {
+    rotate: 90deg;
+  }
+
+  [aria-expanded="true"] > .faq-icon::after {
+    rotate: 0deg;
+  }
+
+  .faq-panel {
+    max-width: 38rem;
+    padding-block-end: 1.25rem;
+    color: var(--color-fg-soft);
+  }
+
+  .js .faq-panel[data-open="false"] {
+    display: none;
+  }
+}

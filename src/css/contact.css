@@ -1,0 +1,54 @@
+/*
+ * Contact page (src/pages/contact.html). Imported by main.css; class names are scoped to `.contact-*`.
+ * Forms, buttons, colour bands and type come from main.css.
+ */
+
+@layer components {
+  /* Same section rhythm as Home 1, Classes and Shows: 48px on phones to 80px on desktop. */
+  .contact-page {
+    --spacing-section: clamp(3rem, 2.25rem + 3vw, 5rem);
+  }
+
+  /* The email/phone list collapses while site.json has no details to show.
+     display lives here, not in a `grid` utility, so the rule below can override it. */
+  .contact-details {
+    display: grid;
+  }
+
+  .contact-details:not(:has(> :not([hidden]))) {
+    display: none;
+  }
+
+  /* Map frame, filled by js/contact.js only when site.json has a verified embed URL. */
+  .contact-map {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    background-color: var(--color-page-alt);
+  }
+
+  @media (min-width: 48rem) {
+    .contact-map {
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  .contact-map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Confirmation shown after the form passes validation. */
+  .contact-status {
+    padding: 1.25rem 1.5rem;
+    border-inline-start: 4px solid var(--color-success);
+    background-color: var(--color-surface);
+  }
+
+  .contact-status:focus {
+    outline: none;
+  }
+}

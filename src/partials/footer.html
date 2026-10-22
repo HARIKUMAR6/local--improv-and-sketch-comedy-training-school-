@@ -1,0 +1,81 @@
+<footer class="site-footer" data-site-footer>
+  <div class="container-site grid gap-10 py-14 lg:grid-cols-12 lg:gap-8 lg:py-20">
+    <!-- Brand -->
+    <div class="grid content-start gap-5 lg:col-span-4">
+      <!-- Negative margin keeps the 44px tap area while aligning the mark with the column headings. -->
+      <a class="brand -my-1.5 w-fit" href="index.html">
+        <!-- @include assets/icons/logo-mark.svg -->
+        <span>{{site.name}}</span>
+      </a>
+      <p class="footer-text max-w-md">{{site.footerDescription}}</p>
+    </div>
+
+    <!-- Link and contact groups: stack on mobile, sit in a row from sm, alongside the brand from lg. -->
+    <div class="flex flex-col gap-8 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-8 lg:col-span-8 lg:justify-between lg:gap-x-8">
+      <nav class="footer-group max-sm:border-t max-sm:border-[var(--footer-line)] max-sm:pt-8" aria-labelledby="footer-explore">
+        <h2 class="footer-heading" id="footer-explore">Explore</h2>
+        <ul class="mt-4 grid gap-1">
+          <li><a class="footer-link" href="index.html">Home 1</a></li>
+          <li><a class="footer-link" href="home-2.html">Home 2</a></li>
+          <li><a class="footer-link" href="about.html">About</a></li>
+          <li><a class="footer-link" href="classes.html">Classes</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-group max-sm:border-t max-sm:border-[var(--footer-line)] max-sm:pt-8" aria-labelledby="footer-performances">
+        <h2 class="footer-heading" id="footer-performances">Performances &amp; Info</h2>
+        <ul class="mt-4 grid gap-1">
+          <li><a class="footer-link" href="shows.html">Shows</a></li>
+          <li><a class="footer-link" href="contact.html">Contact</a></li>
+          <li><a class="footer-link" href="dashboard.html">Dashboard</a></li>
+          <li><a class="footer-link" href="login.html">Login Portal</a></li>
+        </ul>
+      </nav>
+
+      <!-- Collapses entirely while site.json → contact has no verified details (see README → Site settings). -->
+      <div class="footer-group max-sm:border-t max-sm:border-[var(--footer-line)] max-sm:pt-8" data-footer-contact>
+        <h2 class="footer-heading">Get in Touch</h2>
+        <ul class="mt-4 grid gap-1">
+          <li data-contact-method="email" data-value="{{site.contact.email}}" hidden>
+            <a class="footer-link" data-contact-link></a>
+          </li>
+          <li data-contact-method="phone" data-value="{{site.contact.phone}}" hidden>
+            <a class="footer-link" data-contact-link></a>
+          </li>
+          <li class="footer-text py-2 leading-snug" data-contact-method="address" data-value="{{site.contact.address}}" hidden>
+            <span data-contact-text></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div class="container-site flex flex-col-reverse gap-5 py-6 sm:flex-row sm:items-center sm:justify-between">
+      <p class="footer-text text-sm">&copy; <span data-current-year>{{build.year}}</span> {{site.name}}. All rights reserved.</p>
+
+      <ul class="flex items-center gap-2" aria-label="Social media">
+        <li>
+          <a class="social-link" href="{{site.social.instagram}}" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)" title="Instagram">
+            <!-- @include assets/icons/social-instagram.svg -->
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="{{site.social.facebook}}" target="_blank" rel="noopener noreferrer" aria-label="Facebook (opens in a new tab)" title="Facebook">
+            <!-- @include assets/icons/social-facebook.svg -->
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="{{site.social.youtube}}" target="_blank" rel="noopener noreferrer" aria-label="YouTube (opens in a new tab)" title="YouTube">
+            <!-- @include assets/icons/social-youtube.svg -->
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="{{site.social.linkedin}}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
+            <!-- @include assets/icons/social-linkedin.svg -->
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

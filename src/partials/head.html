@@ -1,0 +1,28 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{page.documentTitle}}</title>
+<meta name="description" content="{{page.description}}">
+<meta name="robots" content="{{page.robots}}">
+<meta name="theme-color" content="#F7F3EB" data-theme-color>
+<!-- Applies the saved theme and text direction before first paint to avoid a flash. -->
+<script>
+  (function () {
+    var root = document.documentElement, theme, dir;
+    root.classList.replace("no-js", "js");
+    try {
+      theme = localStorage.getItem("theme");
+      dir = localStorage.getItem("dir");
+    } catch (error) {}
+    if (theme !== "light" && theme !== "dark") {
+      theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", theme);
+    if (dir === "rtl" || dir === "ltr") root.setAttribute("dir", dir);
+  })();
+</script>
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/main.css">
+<script src="js/main.js" defer></script>

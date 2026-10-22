@@ -1,0 +1,234 @@
+<!-- @page title="Dashboard" nav="dashboard" robots="noindex, nofollow" description="Your classes, progress, and showcase registrations in one place." -->
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+  <!-- @include partials/head.html -->
+  <script src="js/dashboard.js" defer></script>
+</head>
+<body class="app-body">
+  <!--
+    Student portal (app shell, not the public header/footer).
+    Static markup: sidebar, top bar and section frames. js/dashboard.js renders the live parts
+    (stats, levels, progress, showcase status, activity, account) from one state object kept in
+    localStorage. Theme and direction controls reuse the shared hooks handled by js/main.js.
+  -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="app-shell">
+    <!-- Sidebar: sticky on desktop (lg), drawer below lg -->
+    <aside class="app-sidebar" id="app-sidebar" data-sidebar data-open="false" aria-label="Student portal">
+      <div class="flex h-header shrink-0 items-center justify-between gap-3 px-5">
+        <a class="brand" href="index.html">
+          <!-- @include assets/icons/logo-mark.svg -->
+          <span>{{site.name}}</span>
+        </a>
+        <button class="icon-btn lg:hidden" type="button" aria-label="Close menu" data-sidebar-close>
+          <!-- @include assets/icons/close.svg -->
+        </button>
+      </div>
+
+      <nav class="grid gap-1 px-3 pt-2" aria-label="Portal">
+        <a class="app-nav-link" href="#overview" data-nav-target="overview" aria-current="location">
+          <!-- @include assets/icons/dash-overview.svg -->Overview
+        </a>
+        <a class="app-nav-link" href="#classes" data-nav-target="classes">
+          <!-- @include assets/icons/dash-classes.svg -->My Classes
+        </a>
+        <a class="app-nav-link" href="#levels" data-nav-target="levels">
+          <!-- @include assets/icons/dash-levels.svg -->Explore Class Levels
+        </a>
+        <a class="app-nav-link" href="#progress" data-nav-target="progress">
+          <!-- @include assets/icons/dash-progress.svg -->Course Progress
+        </a>
+        <a class="app-nav-link" href="#showcase" data-nav-target="showcase">
+          <!-- @include assets/icons/dash-showcase.svg -->Showcase Performances
+        </a>
+        <a class="app-nav-link" href="#activity" data-nav-target="activity">
+          <!-- @include assets/icons/dash-activity.svg -->My Activity
+        </a>
+      </nav>
+
+      <div class="mt-auto grid gap-4 border-t border-line px-3 py-4">
+        <!-- Direction control moves here on small phones, where the top bar has no room. -->
+        <div class="flex items-center justify-between gap-4 px-2 sm:hidden" data-requires-js>
+          <span class="text-sm font-medium text-fg-muted" id="drawer-dir-label">Text direction</span>
+          <div class="dir-switch" role="group" aria-labelledby="drawer-dir-label">
+            <button type="button" data-dir-option="ltr" aria-pressed="true">LTR</button>
+            <button type="button" data-dir-option="rtl" aria-pressed="false">RTL</button>
+          </div>
+        </div>
+        <a class="app-nav-link" href="login.html">
+          <!-- @include assets/icons/dash-logout.svg -->Logout
+        </a>
+      </div>
+    </aside>
+    <div class="app-backdrop lg:hidden" data-sidebar-backdrop data-open="false" aria-hidden="true"></div>
+
+    <div class="app-column">
+      <header class="app-topbar">
+        <button class="icon-btn menu-toggle lg:hidden" type="button" aria-expanded="false" aria-controls="app-sidebar" aria-label="Open menu" data-sidebar-toggle data-requires-js>
+          <!-- @include assets/icons/menu.svg -->
+          <!-- @include assets/icons/close.svg -->
+        </button>
+
+        <nav class="min-w-0 flex-1" aria-label="Breadcrumb">
+          <ol class="flex min-w-0 items-center gap-2 font-heading text-[0.9375rem]">
+            <li class="hidden text-fg-muted sm:block">Student portal</li>
+            <li class="hidden text-fg-muted sm:block" aria-hidden="true">/</li>
+            <li class="truncate font-semibold" aria-current="location" data-topbar-title>Overview</li>
+          </ol>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <p class="me-1 hidden text-sm text-fg-soft md:block" data-topbar-greeting>Hi there</p>
+
+          <button class="icon-btn" type="button" data-theme-toggle data-requires-js aria-label="Switch to dark theme">
+            <!-- @include assets/icons/moon.svg -->
+            <!-- @include assets/icons/sun.svg -->
+          </button>
+
+          <div class="dir-switch hidden sm:inline-flex" role="group" aria-label="Text direction" data-requires-js>
+            <button type="button" data-dir-option="ltr" aria-pressed="true">LTR</button>
+            <button type="button" data-dir-option="rtl" aria-pressed="false">RTL</button>
+          </div>
+
+          <div class="relative" data-disclosure data-dropdown>
+            <button class="avatar-btn" type="button" aria-expanded="false" aria-controls="profile-menu" aria-label="Account menu" data-disclosure-trigger>
+              <span class="avatar" data-avatar aria-hidden="true">
+                <!-- @include assets/icons/dash-user.svg -->
+              </span>
+            </button>
+            <div class="profile-menu" id="profile-menu" data-disclosure-panel data-open="false">
+              <p class="truncate px-3 pb-2 pt-1.5 text-sm font-semibold" data-profile-name>Student account</p>
+              <a class="dropdown-link" href="#account">Account settings</a>
+              <a class="dropdown-link" href="#activity">My activity</a>
+              <a class="dropdown-link" href="login.html">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-main" id="main" tabindex="-1">
+
+        <!-- 1. Welcome and learning overview ================================ -->
+        <section class="app-section" id="overview" data-spy="overview" aria-labelledby="overview-title">
+          <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div class="grid gap-2">
+              <h1 class="app-h1" id="overview-title" data-greeting>Welcome back!</h1>
+              <p class="max-w-[34rem] text-fg-soft" data-overview-line>Pick up where you left off.</p>
+            </div>
+            <a class="btn btn-primary btn-arrow w-full shrink-0 sm:w-fit" href="#progress" data-next-action>
+              <span data-next-action-label>Continue learning</span>
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+          </div>
+
+          <dl class="stat-strip mt-6">
+            <div class="stat">
+              <dt class="stat-label">Current level</dt>
+              <dd class="stat-value" data-stat="level">–</dd>
+              <dd class="stat-note" data-stat="level-note"></dd>
+            </div>
+            <div class="stat">
+              <dt class="stat-label">Level progress</dt>
+              <dd class="stat-value" data-stat="percent">0%</dd>
+              <dd class="mt-2"><span class="progress-track" aria-hidden="true"><span class="progress-fill" data-stat="bar"></span></span></dd>
+            </div>
+            <div class="stat">
+              <dt class="stat-label">Milestones completed</dt>
+              <dd class="stat-value" data-stat="milestones">0 of 6</dd>
+              <dd class="stat-note">In your current level</dd>
+            </div>
+            <div class="stat">
+              <dt class="stat-label">Up next</dt>
+              <dd class="stat-value stat-value-sm" data-stat="next">–</dd>
+              <dd class="stat-note" data-stat="showcase-note"></dd>
+            </div>
+          </dl>
+        </section>
+
+        <!-- 2. My classes and class levels ================================== -->
+        <section class="app-section" aria-labelledby="classes-title">
+          <div id="classes" data-spy="classes">
+            <h2 class="app-h2" id="classes-title">My classes</h2>
+            <div class="current-class mt-5" data-current-class></div>
+            <div class="mt-4" data-other-classes></div>
+          </div>
+
+          <div class="mt-12" id="levels" data-spy="levels">
+            <div class="grid gap-1.5">
+              <h2 class="app-h2">Explore class levels</h2>
+              <p class="max-w-[36rem] text-fg-soft">Three levels, from your first warm-up game to performing original material. Enroll in a level to add it to your classes.</p>
+            </div>
+            <ol class="level-ladder mt-6" data-levels></ol>
+          </div>
+        </section>
+
+        <!-- 3. Course progress =============================================== -->
+        <section class="app-section" id="progress" data-spy="progress" aria-labelledby="progress-title">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <h2 class="app-h2" id="progress-title">Course progress</h2>
+            <div class="seg-switch" role="group" aria-label="Show progress for" data-progress-switch hidden></div>
+          </div>
+
+          <div class="mt-6 grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+            <div class="progress-summary" data-progress-summary></div>
+            <ol class="milestones" data-milestones aria-label="Milestones"></ol>
+          </div>
+        </section>
+
+        <!-- 4. Showcase performances ========================================= -->
+        <section class="app-section" id="showcase" data-spy="showcase" aria-labelledby="showcase-title">
+          <div class="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+            <div class="grid content-start gap-4">
+              <div class="grid gap-1.5">
+                <h2 class="app-h2" id="showcase-title">Showcase performances</h2>
+                <p class="text-fg-soft">Every term ends on stage. Register your interest here; dates, venues and tickets are confirmed on the <a class="link" href="shows.html">Shows page</a>.</p>
+              </div>
+              <figure class="hidden lg:block">
+                <img class="aspect-[16/10] w-full rounded-md object-cover" src="assets/images/shows-type-showcase.jpg" width="1232" height="816" loading="lazy" decoding="async" alt="Student performers on a dark stage, chatting as they take their places.">
+              </figure>
+            </div>
+            <ul class="opportunities" data-opportunities aria-label="Showcase opportunities"></ul>
+          </div>
+        </section>
+
+        <!-- 5. Recent activity and account =================================== -->
+        <section class="app-section" id="activity" data-spy="activity" aria-labelledby="activity-title">
+          <div class="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
+            <div>
+              <div class="flex items-center justify-between gap-4">
+                <h2 class="app-h2" id="activity-title" tabindex="-1">My activity</h2>
+                <button class="btn btn-ghost btn-sm" type="button" data-clear-activity hidden>Clear</button>
+              </div>
+              <ol class="activity-list mt-4" data-activity-list></ol>
+              <p class="activity-empty mt-4" data-activity-empty>Nothing here yet. Complete a milestone, enroll in a level or register for a showcase, and it will appear here.</p>
+            </div>
+
+            <div class="grid content-start gap-5" id="account">
+              <h2 class="app-h2">Account</h2>
+              <form class="grid gap-4" data-account-form novalidate>
+                <div class="form-field">
+                  <label class="form-label" for="display-name">Display name</label>
+                  <input class="form-control" id="display-name" name="displayName" type="text" autocomplete="name" maxlength="40" aria-describedby="display-name-hint display-name-error">
+                  <p class="form-hint" id="display-name-hint">Shown in your greeting. 2 to 40 characters.</p>
+                  <p class="form-error" id="display-name-error" data-name-error hidden></p>
+                </div>
+                <button class="btn btn-secondary w-full sm:w-fit" type="submit">Save name</button>
+              </form>
+
+              <dl class="account-summary" data-account-summary></dl>
+
+              <a class="btn btn-outline w-full sm:w-fit" href="login.html">
+                <!-- @include assets/icons/dash-logout.svg -->Logout
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="app-toast" role="status" aria-live="polite" data-toast hidden></div>
+</body>
+</html>

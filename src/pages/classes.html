@@ -1,0 +1,269 @@
+<!-- @page title="Classes" nav="classes" description="Improv and sketch comedy classes for every level, from absolute beginners to advanced performers and writers." -->
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+  <!-- @include partials/head.html -->
+</head>
+<body>
+  <!-- @include partials/header.html -->
+
+  <!--
+    Classes: seven sections.
+      1 Hero · 2 Explore classes · 3 Skills · 4 Starting point · 5 Class experience · 6 FAQ · 7 Closing call to action
+    Class information comes from content already on the site (Home 1, Home 2, site.json): improv for
+    beginners and experienced performers, sketch comedy, and private group workshops. No prices,
+    schedules or instructors are listed. Photos are from Wikimedia Commons; credits are listed in
+    README → Image credits.
+  -->
+  <main class="classes-page" id="main" tabindex="-1">
+
+    <!-- 1. Hero ============================================================ -->
+    <section class="home-hero" aria-labelledby="classes-hero-title">
+      <div class="container-site grid gap-y-8 lg:grid-cols-12 lg:items-center lg:gap-x-8">
+        <div class="grid gap-6 lg:col-span-6">
+          <p class="kicker">Find your class</p>
+          <h1 class="font-heading text-hero" id="classes-hero-title">
+            <span class="hero-line">Find your funny.</span>
+            <span class="hero-line text-accent-text">Build your craft.</span>
+          </h1>
+          <p class="lead max-w-[28rem]">Improv and sketch classes for every level, from your first warm-up game to performing original material.</p>
+          <a class="btn btn-primary btn-arrow mt-2 w-full sm:w-fit" href="#explore">
+            Explore Classes
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+        </div>
+
+        <figure class="lg:col-span-6">
+          <img class="aspect-[4/3] w-full rounded-md object-cover md:aspect-[16/9] lg:aspect-[4/3]" src="assets/images/classes-hero-workshop-circle.jpg" width="1280" height="853" fetchpriority="high" alt="Adult students sit and stand in a wide circle around a studio floor, laughing as two classmates work through an exercise in the middle.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 2. Explore classes ================================================= -->
+    <section class="section" id="explore" aria-labelledby="explore-title">
+      <div class="container-site grid gap-10">
+        <div class="section-heading">
+          <p class="kicker">Explore classes</p>
+          <h2 class="section-title" id="explore-title">Four ways into the room</h2>
+        </div>
+
+        <div class="grid gap-x-8 gap-y-12 md:grid-cols-12">
+          <article class="grid content-start gap-3 md:col-span-7" id="improv-beginners">
+            <img class="mb-2 aspect-[4/3] w-full rounded-md object-cover" src="assets/images/classes-improv-beginner.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="Adults in a bright rehearsal room play an improv game: two crouch low to the floor while others react around them.">
+            <p class="label text-accent-text">Complete beginners</p>
+            <h3 class="font-heading text-title-lg">Improv for beginners</h3>
+            <p class="max-w-[30rem] text-fg-soft">Warm-up games, listening and simple scenes. No experience needed.</p>
+          </article>
+
+          <article class="grid content-start gap-3 md:col-span-5 lg:col-span-4 lg:col-start-9 lg:mt-24" id="improv-experienced">
+            <img class="mb-2 aspect-[4/3] w-full rounded-md object-cover" src="assets/images/classes-improv-experienced.jpg" width="1280" height="741" loading="lazy" decoding="async" alt="Four improvisers mid-scene on a lit stage, one pointing, one kneeling and one with an arm raised in triumph.">
+            <p class="label text-accent-text">Experienced performers</p>
+            <h3 class="font-heading text-title-lg">Improv beyond the basics</h3>
+            <p class="text-fg-soft">Further levels for people who already perform.</p>
+            <a class="text-link btn-arrow w-fit" href="contact.html">
+              Ask which level fits you
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+          </article>
+
+          <article class="grid content-start gap-3 md:col-span-5" id="sketch">
+            <img class="mb-2 aspect-[4/3] w-full rounded-md object-cover object-[40%_50%]" src="assets/images/classes-sketch-rehearsal.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="On a bare stage, an actor stands at an ironing board while her scene partner sits nearby reading from a script.">
+            <p class="label text-accent-text">Writers, performers &amp; improvisers</p>
+            <h3 class="font-heading text-title-lg">Sketch comedy</h3>
+            <p class="max-w-[30rem] text-fg-soft">Find the idea, write and rewrite it, then perform it with a cast.</p>
+          </article>
+
+          <article class="grid content-start gap-3 md:col-span-7 lg:col-span-6 lg:col-start-7 lg:mt-16" id="workshops">
+            <img class="mb-2 aspect-[3/2] w-full rounded-md object-cover" src="assets/images/classes-group-workshop.jpg" width="1280" height="857" loading="lazy" decoding="async" alt="A large group fills a hall during a theatre workshop, everyone raising their arms together in a warm-up.">
+            <p class="label text-accent-text">Groups</p>
+            <h3 class="font-heading text-title-lg">Private workshops</h3>
+            <p class="max-w-[30rem] text-fg-soft">An improv session arranged for your own group, from friends to colleagues.</p>
+            <a class="text-link btn-arrow w-fit" href="contact.html">
+              Ask about workshops
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Skills you can explore ========================================= -->
+    <!-- A film strip: columns are sized to each photo's aspect ratio so all four share one height on desktop. -->
+    <section class="section section-alt" aria-labelledby="skills-title">
+      <div class="container-site grid gap-10">
+        <div class="section-heading">
+          <p class="kicker">Skills you can explore</p>
+          <h2 class="section-title" id="skills-title">What you’ll practise</h2>
+        </div>
+
+        <div class="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 lg:grid-cols-[1.5fr_0.75fr_0.75fr_1fr]">
+          <article class="col-span-2 grid content-start gap-2 md:col-span-1">
+            <img class="mb-2 aspect-[3/2] md:aspect-[4/3] lg:aspect-[3/2] w-full rounded-md object-cover" src="assets/images/classes-skill-listening.jpg" width="1280" height="850" loading="lazy" decoding="async" alt="Two actors sit close together on wooden chairs, deep in conversation during a rehearsal break.">
+            <h3 class="font-heading text-title-md">Listening</h3>
+            <p class="text-[0.9375rem] leading-normal text-fg-soft">Hear the offer, then build on it.</p>
+          </article>
+          <article class="grid content-start gap-2">
+            <img class="mb-2 aspect-[3/4] md:aspect-[4/3] lg:aspect-[3/4] w-full rounded-md object-cover object-[42%_50%]" src="assets/images/classes-skill-scene-work.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Black-and-white rehearsal photo: one actor leans in toward another seated on a bench.">
+            <h3 class="font-heading text-title-md">Scene work</h3>
+            <p class="text-[0.9375rem] leading-normal text-fg-soft">Two people, one situation, no script.</p>
+          </article>
+          <article class="grid content-start gap-2">
+            <img class="mb-2 aspect-[3/4] md:aspect-[4/3] lg:aspect-[3/4] w-full rounded-md object-cover" src="assets/images/classes-skill-character.jpg" width="1280" height="1450" loading="lazy" decoding="async" alt="Two actors in period costume on a sofa: a bearded man with a notepad and a woman in a red hat.">
+            <h3 class="font-heading text-title-md">Character</h3>
+            <p class="text-[0.9375rem] leading-normal text-fg-soft">A clear point of view, played truthfully.</p>
+          </article>
+          <article class="col-span-2 grid content-start gap-2 md:col-span-1">
+            <img class="mb-2 aspect-[4/3] w-full rounded-md object-cover lg:aspect-square" src="assets/images/classes-skill-collaboration.jpg" width="1280" height="1252" loading="lazy" decoding="async" alt="Three people in a bright studio balance on one another's backs during a physical trust exercise.">
+            <h3 class="font-heading text-title-md">Collaboration</h3>
+            <p class="text-[0.9375rem] leading-normal text-fg-soft">Make your scene partner look good.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Find your starting point ======================================= -->
+    <section class="section" aria-labelledby="start-title">
+      <div class="container-site grid gap-y-8 md:grid-cols-12 md:items-center md:gap-x-8">
+        <img class="order-2 aspect-[4/3] w-full rounded-md object-cover md:order-1 md:col-span-5" src="assets/images/classes-start-audience.jpg" width="1024" height="687" loading="lazy" decoding="async" alt="Black-and-white photo of a packed audience watching improvisers on a stage.">
+
+        <div class="order-1 grid gap-6 md:order-2 md:col-span-7 lg:col-span-6 lg:col-start-7">
+          <div class="section-heading">
+            <p class="kicker">Find your starting point</p>
+            <h2 class="section-title" id="start-title">Where should you begin?</h2>
+          </div>
+
+          <ul class="border-b border-line">
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[11rem_1fr] sm:gap-x-6 md:grid-cols-1 lg:grid-cols-[11rem_1fr]">
+              <h3 class="font-heading text-lg font-semibold leading-snug">New to comedy</h3>
+              <p class="text-fg-soft">Start with <a class="link" href="#improv-beginners">improv for beginners</a>. No experience needed.</p>
+            </li>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[11rem_1fr] sm:gap-x-6 md:grid-cols-1 lg:grid-cols-[11rem_1fr]">
+              <h3 class="font-heading text-lg font-semibold leading-snug">Already performing</h3>
+              <p class="text-fg-soft">Classes go well beyond the basics. <a class="link" href="contact.html">Ask us</a> which level fits you.</p>
+            </li>
+            <li class="grid gap-1 border-t border-line py-4 sm:grid-cols-[11rem_1fr] sm:gap-x-6 md:grid-cols-1 lg:grid-cols-[11rem_1fr]">
+              <h3 class="font-heading text-lg font-semibold leading-snug">Not sure yet</h3>
+              <p class="text-fg-soft">Come and <a class="link" href="shows.html">watch a show</a> first.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. The class experience =========================================== -->
+    <section class="section section-stage" aria-labelledby="experience-title">
+      <div class="container-site grid gap-10">
+        <div class="section-heading">
+          <p class="kicker">The class experience</p>
+          <h2 class="section-title" id="experience-title">Inside the room</h2>
+        </div>
+
+        <div class="grid gap-x-6 gap-y-8 md:grid-cols-12">
+          <figure class="md:col-span-7">
+            <img class="aspect-[4/3] w-full rounded-md object-cover md:aspect-square" src="assets/images/classes-experience-performance.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="Improvisers perform at the front of a crowded café while the audience watches from tables and sofas.">
+            <figcaption class="mt-4 grid gap-1">
+              <span class="label stage-accent">Perform</span>
+              <span class="stage-muted">Stage time is built into every term.</span>
+            </figcaption>
+          </figure>
+
+          <div class="grid content-start gap-8 md:col-span-5">
+            <figure>
+              <img class="aspect-[16/10] w-full rounded-md object-cover" src="assets/images/classes-experience-rehearsal.jpg" width="1280" height="850" loading="lazy" decoding="async" alt="A director watches from the front row as actors rehearse a scene on a wooden stage.">
+              <figcaption class="mt-4 grid gap-1">
+                <span class="label stage-accent">Rehearse</span>
+                <span class="stage-muted">Run the scene, get notes, try it again.</span>
+              </figcaption>
+            </figure>
+            <figure>
+              <img class="aspect-[16/10] w-full rounded-md object-cover" src="assets/images/classes-experience-ensemble.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="An improv troupe in matching sweatshirts poses together on stage after a show, arms around each other.">
+              <figcaption class="mt-4 grid gap-1">
+                <span class="label stage-accent">Ensemble</span>
+                <span class="stage-muted">You train, and perform, as a group.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Frequently asked questions ===================================== -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container-site grid gap-y-8 md:grid-cols-12 md:gap-x-8">
+        <div class="section-heading content-start md:col-span-4">
+          <p class="kicker">Questions</p>
+          <h2 class="section-title" id="faq-title">Before you sign up</h2>
+        </div>
+
+        <div class="border-t border-line md:col-span-8 lg:col-span-7 lg:col-start-6">
+          <div class="faq-item" data-disclosure>
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-who" data-disclosure-trigger>
+                Who can join?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-who" data-disclosure-panel data-open="false">
+              <p>Anyone curious, from complete beginners to working performers. No experience is needed for beginner classes.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-disclosure>
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-first" data-disclosure-trigger>
+                What happens in a first class?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-first" data-disclosure-panel data-open="false">
+              <p>Warm-up and listening games, saying “yes, and”, and simple two-person scenes.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-disclosure>
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-perform" data-disclosure-trigger>
+                Will I have to perform?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-perform" data-disclosure-panel data-open="false">
+              <p>Stage time is built into every term, so you perform for a live audience while you’re still training.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-disclosure>
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-enquire" data-disclosure-trigger>
+                How do I sign up or ask a question?
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-enquire" data-disclosure-panel data-open="false">
+              <p><a class="link" href="contact.html">Contact the team</a> and tell us where you’re starting from.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Closing call to action ========================================= -->
+    <section class="section section-accent" aria-labelledby="classes-cta-title">
+      <div class="container-site grid gap-10">
+        <div class="grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-x-8">
+          <div class="grid gap-3 lg:col-span-8">
+            <h2 class="section-title" id="classes-cta-title">Your first class is one message away.</h2>
+            <p class="max-w-[30rem] text-lead leading-[1.6]">Tell us where you’re starting from and we’ll help you choose.</p>
+          </div>
+          <div class="lg:col-span-4 lg:justify-self-end">
+            <a class="btn btn-ink btn-arrow w-full sm:w-fit" href="contact.html">
+              Contact the Team
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include partials/footer.html -->
+  <!-- @include partials/scroll-top.html -->
+</body>
+</html>

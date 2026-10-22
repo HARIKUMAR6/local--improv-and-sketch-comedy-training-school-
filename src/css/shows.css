@@ -1,0 +1,54 @@
+/*
+ * Shows page (src/pages/shows.html). Imported by main.css; class names are scoped to `.shows-*`.
+ * Type, colour bands (.section-stage, .section-accent) and captions come from main.css.
+ */
+
+@layer components {
+  /* Same tighter section rhythm as Home 1 and Classes: 48px on phones to 80px on desktop. */
+  .shows-page {
+    --spacing-section: clamp(3rem, 2.25rem + 3vw, 5rem);
+  }
+
+  /* Hero: headline row above a full-bleed stage photograph. */
+  .shows-hero {
+    padding-block-start: clamp(2rem, 1.25rem + 3vw, 4rem);
+  }
+
+  .shows-hero-media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 55% 30%;
+  }
+
+  @media (min-width: 40rem) {
+    .shows-hero-media img {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .shows-hero-media img {
+      aspect-ratio: auto;
+      height: clamp(24rem, 34vw, 32rem);
+    }
+  }
+
+  /* The arrow icon turned to point down, towards the section it scrolls to. */
+  .shows-arrow-down svg {
+    rotate: 90deg;
+  }
+
+  /* Upcoming shows: a date slot that reads like the stub of a ticket. */
+  .shows-date-slot {
+    display: grid;
+    place-content: center;
+    gap: 0.125rem;
+    min-width: 5.5rem;
+    min-height: 5.5rem;
+    padding: 0.75rem;
+    border: 1px dashed var(--stage-line);
+    border-radius: var(--radius-xs);
+    text-align: center;
+  }
+}

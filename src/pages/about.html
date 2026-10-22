@@ -1,0 +1,139 @@
+<!-- @page title="About" nav="about" description="About our improv and sketch comedy school: how we teach and who we teach." -->
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+  <!-- @include partials/head.html -->
+</head>
+<body>
+  <!-- @include partials/header.html -->
+
+  <!--
+    About: five sections.
+      1 Hero · 2 Story and purpose · 3 What we believe · 4 Community · 5 Closing call to action
+    Copy uses only what the site already states (site.json, Home 2): who the school teaches, how it
+    teaches, and that stage time is part of every term. No founding date, location or history is given.
+    Photos are from Wikimedia Commons; credits are listed in README → Image credits.
+  -->
+  <main class="about-page" id="main" tabindex="-1">
+
+    <!-- 1. Hero: same construction as the Classes hero (padding, 6/6 split, 4:3 photo) ============= -->
+    <section class="home-hero" aria-labelledby="about-title">
+      <div class="container-site grid gap-y-8 lg:grid-cols-12 lg:items-center lg:gap-x-8">
+        <div class="grid gap-6 lg:col-span-6">
+          <p class="kicker">Our story</p>
+          <h1 class="font-heading text-hero" id="about-title">
+            <span class="hero-line">Play, create,</span>
+            <span class="hero-line text-accent-text">and connect.</span>
+          </h1>
+          <p class="lead max-w-[28rem]">An improv and sketch comedy school for curious beginners and working performers.</p>
+          <a class="btn btn-primary btn-arrow mt-2 w-full sm:w-fit" href="classes.html">
+            Explore Classes
+            <!-- @include assets/icons/arrow-right.svg -->
+          </a>
+        </div>
+
+        <figure class="lg:col-span-6">
+          <img class="aspect-[4/3] w-full rounded-md object-cover md:aspect-[16/9] lg:aspect-[4/3]" src="assets/images/about-hero-workshop.jpg" width="1280" height="853" fetchpriority="high" alt="Three adults move across a bare rehearsal studio in a theatre-games exercise, each mid-stride in a different posture.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 2. Story and purpose ============================================== -->
+    <section class="section section-alt" aria-labelledby="purpose-title">
+      <div class="container-site grid gap-y-8 md:grid-cols-12 md:items-center md:gap-x-8">
+        <img class="aspect-[4/3] w-full rounded-md object-cover md:col-span-6 lg:col-span-7" src="assets/images/about-story-scene.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Three improvisers share a scene on a small stage: a man in a short-sleeved shirt faces two women, one leaning on the other's shoulder.">
+
+        <div class="grid gap-6 md:col-span-6 lg:col-span-5 lg:ps-6">
+          <div class="section-heading">
+            <p class="kicker">Our purpose</p>
+            <h2 class="section-title" id="purpose-title">Comedy is a craft you practise</h2>
+          </div>
+          <p class="max-w-[30rem] text-fg-soft">Not a talent you either have or don’t. We teach listening, collaboration and writing, then put our students on stage.</p>
+          <p class="max-w-[30rem] border-s-2 border-accent ps-4 font-heading text-title-md font-medium">Taught by working comedians, with stage time built into every term.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. What we believe ================================================ -->
+    <section class="section section-stage" aria-labelledby="beliefs-title">
+      <div class="container-site grid gap-10">
+        <div class="section-heading">
+          <p class="kicker">What we believe</p>
+          <h2 class="section-title" id="beliefs-title">Four ideas we teach by</h2>
+        </div>
+
+        <div class="grid gap-y-8 md:grid-cols-12 md:items-center md:gap-x-8">
+          <img class="aspect-[4/3] w-full rounded-md object-cover md:col-span-5 md:aspect-[4/5] lg:aspect-[4/3]" src="assets/images/about-beliefs-exercise.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="A smiling workshop participant crosses his arms in front of him mid-exercise while a classmate moves behind him.">
+
+          <div class="border-b stage-rule md:col-span-7 lg:col-span-6 lg:col-start-7">
+            <article class="grid gap-1.5 border-t stage-rule py-5">
+              <h3 class="font-heading text-[clamp(1.625rem,1.35rem+1vw,2.125rem)] leading-[1.1] tracking-[-0.025em]">Listen first.</h3>
+              <p class="stage-muted">Every scene starts with what your partner just said.</p>
+            </article>
+            <article class="grid gap-1.5 border-t stage-rule py-5">
+              <h3 class="font-heading text-[clamp(1.625rem,1.35rem+1vw,2.125rem)] leading-[1.1] tracking-[-0.025em]">Play generously.</h3>
+              <p class="stage-muted">Make your scene partners look good.</p>
+            </article>
+            <article class="grid gap-1.5 border-t stage-rule py-5">
+              <h3 class="font-heading text-[clamp(1.625rem,1.35rem+1vw,2.125rem)] leading-[1.1] tracking-[-0.025em]">Write it down.</h3>
+              <p class="stage-muted">Turn a funny idea into a script, then rewrite it until it works.</p>
+            </article>
+            <article class="grid gap-1.5 border-t stage-rule py-5">
+              <h3 class="font-heading text-[clamp(1.625rem,1.35rem+1vw,2.125rem)] leading-[1.1] tracking-[-0.025em] stage-accent">Take the stage.</h3>
+              <p class="stage-muted">Small risks in a supportive room make the big ones easier.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Inside our creative community ================================== -->
+    <section class="section" aria-labelledby="community-title">
+      <div class="container-site grid gap-10">
+        <div class="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-x-8">
+          <div class="section-heading lg:col-span-7">
+            <p class="kicker">Inside our creative community</p>
+            <h2 class="section-title" id="community-title">A room that runs on generosity</h2>
+          </div>
+          <p class="max-w-[30rem] text-fg-soft lg:col-span-5">You’ll train with people who cheer the risky choice, from complete beginners to working performers.</p>
+        </div>
+
+        <div class="grid gap-x-6 gap-y-8 md:grid-cols-12">
+          <figure class="md:col-span-8">
+            <img class="aspect-[3/2] w-full rounded-md object-cover md:aspect-[16/10]" src="assets/images/about-community-festival.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Dozens of improvisers crowd onto a black stage for a group photo, some sitting on the floor, many with arms raised.">
+          </figure>
+          <figure class="md:col-span-4">
+            <img class="aspect-[4/5] w-full rounded-md object-cover object-[50%_30%] md:aspect-auto md:h-[calc(100%-2.25rem)]" src="assets/images/about-community-street.jpg" width="1280" height="1490" loading="lazy" decoding="async" alt="At an outdoor festival, a bearded performer embraces a scene partner in white mime make-up as the crowd looks on.">
+          </figure>
+          <figure class="md:col-span-5">
+            <img class="aspect-[4/3] w-full rounded-md object-cover" src="assets/images/about-community-troupe.jpg" width="1280" height="845" loading="lazy" decoding="async" alt="An improv ensemble piles together on a dark stage, several lying across each other's laps, all grinning.">
+          </figure>
+          <figure class="md:col-span-7">
+            <img class="aspect-[16/10] w-full rounded-md object-cover md:aspect-auto md:h-[calc(100%-2.25rem)]" src="assets/images/about-community-match.jpg" width="1024" height="687" loading="lazy" decoding="async" alt="Black-and-white photo of a theatresports match: a performer and a referee in a striped shirt on stage, team-mates seated behind a white barrier.">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Join the experience ============================================ -->
+    <section class="section section-accent" aria-labelledby="join-title">
+      <div class="container-site grid gap-10">
+        <div class="grid gap-8 md:grid-cols-12 md:items-center md:gap-x-8">
+          <div class="grid gap-4 md:col-span-6 lg:col-span-5">
+            <h2 class="section-title" id="join-title">Come and play.</h2>
+            <p class="max-w-[26rem] text-lead leading-[1.6]">Start with a beginner class. No experience needed.</p>
+            <a class="btn btn-ink btn-arrow mt-2 w-full sm:w-fit" href="classes.html">
+              Explore Classes
+              <!-- @include assets/icons/arrow-right.svg -->
+            </a>
+          </div>
+          <img class="aspect-[3/2] w-full rounded-md object-cover md:col-span-6 lg:col-span-6 lg:col-start-7" src="assets/images/about-cta-jump.jpg" width="1280" height="921" loading="lazy" decoding="async" alt="Five performers in vaudeville costumes leap into the air in front of a red stage curtain, playing cards flying around them.">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @include partials/footer.html -->
+  <!-- @include partials/scroll-top.html -->
+</body>
+</html>
