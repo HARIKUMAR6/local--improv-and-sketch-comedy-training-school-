@@ -2,7 +2,7 @@
 
 <header class="site-header" data-site-header>
   <!-- From xl: three columns (brand | centered navigation | controls) so the navigation is centered in the header itself. -->
-  <div class="container-site flex h-header items-center gap-6 xl:grid xl:grid-cols-[1fr_auto_1fr]">
+  <div class="container-site flex h-header items-center gap-3 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-6">
     <a class="brand xl:justify-self-start" href="index.html">
       <!-- @include assets/icons/logo-mark.svg -->
       <span>{{site.name}}</span>
@@ -34,7 +34,14 @@
         <!-- @include assets/icons/sun.svg -->
       </button>
 
-      <div class="dir-switch hidden sm:inline-flex" role="group" aria-label="Text direction" data-requires-js>
+      <!-- Single-button text toggle, header bar, below xl: same box as the theme toggle above. -->
+      <button class="icon-btn dir-toggle xl:hidden" type="button" data-dir-toggle data-requires-js aria-label="Switch to right-to-left layout" title="Switch to right-to-left layout">
+        <span class="dir-toggle-to-rtl" aria-hidden="true">RTL</span>
+        <span class="dir-toggle-to-ltr" aria-hidden="true">LTR</span>
+      </button>
+
+      <!-- Two-segment control, desktop only (xl, 1280px+); the single-button toggle above covers mobile and tablet. -->
+      <div class="dir-switch hidden xl:inline-flex" role="group" aria-label="Text direction" data-requires-js>
         <button type="button" data-dir-option="ltr" aria-pressed="true" title="Left to right">LTR</button>
         <button type="button" data-dir-option="rtl" aria-pressed="false" title="Right to left">RTL</button>
       </div>
@@ -72,15 +79,6 @@
       </nav>
 
       <a class="btn btn-primary btn-lg btn-block" href="login.html" data-nav="login">Login</a>
-
-      <!-- Direction control moves into the menu on small phones, where the header bar has no room. -->
-      <div class="flex items-center justify-between gap-4 sm:hidden" data-requires-js>
-        <span class="text-sm font-medium text-fg-muted" id="mobile-dir-label">Text direction</span>
-        <div class="dir-switch" role="group" aria-labelledby="mobile-dir-label">
-          <button type="button" data-dir-option="ltr" aria-pressed="true" title="Left to right">LTR</button>
-          <button type="button" data-dir-option="rtl" aria-pressed="false" title="Right to left">RTL</button>
-        </div>
-      </div>
     </div>
   </div>
 </header>

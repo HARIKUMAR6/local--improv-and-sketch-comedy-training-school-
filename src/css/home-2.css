@@ -158,14 +158,11 @@
       min-height: clamp(36rem, calc(100svh - var(--spacing-header) - 3.5rem), 46rem);
     }
 
-    /* Bleeds to the viewport edge: the gutter plus any space outside the container.
-       A scrollbar's extra width is clipped by body { overflow-x: clip }. */
+    /* Fills the row's full height within its own grid column (stays inside
+       .container-site, like every other inner-page hero image). */
     .home2-hero-media {
       aspect-ratio: auto;
       height: 100%;
-      margin-inline-end: calc(
-        -1 * var(--spacing-gutter) - max(0px, (100vw - var(--container-site) - 2 * var(--spacing-gutter)) / 2)
-      );
     }
   }
 

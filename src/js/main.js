@@ -69,11 +69,19 @@
 
   function initDirection() {
     var options = document.querySelectorAll("[data-dir-option]");
+    // Single-button toggle in the mobile/tablet header bar (below xl); see partials/header.html.
+    var toggles = document.querySelectorAll("[data-dir-toggle]");
 
     function apply(dir) {
       root.setAttribute("dir", dir);
       options.forEach(function (option) {
         option.setAttribute("aria-pressed", String(option.getAttribute("data-dir-option") === dir));
+      });
+      var next = dir === "rtl" ? "ltr" : "rtl";
+      var label = "Switch to " + (next === "rtl" ? "right-to-left" : "left-to-right") + " layout";
+      toggles.forEach(function (toggle) {
+        toggle.setAttribute("aria-label", label);
+        toggle.setAttribute("title", label);
       });
     }
 
@@ -84,6 +92,14 @@
         var dir = option.getAttribute("data-dir-option");
         apply(dir);
         storage.set("dir", dir);
+      });
+    });
+
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener("click", function () {
+        var next = root.getAttribute("dir") === "rtl" ? "ltr" : "rtl";
+        apply(next);
+        storage.set("dir", next);
       });
     });
   }

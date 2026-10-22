@@ -856,6 +856,31 @@
     color: var(--color-page);
   }
 
+  /* Single-button direction toggle for the header bar below xl (1280px), where
+     the two-segment .dir-switch above would crowd the brand and menu button.
+     Reuses .icon-btn for identical width, height, padding, border and radius
+     to the theme toggle beside it; only the text label styling is added here.
+     The label shows the direction a click switches TO, mirroring the theme
+     toggle's sun/moon convention (the icon shown is also the target state). */
+  .dir-toggle {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .dir-toggle-to-ltr {
+    display: none;
+  }
+
+  [dir="rtl"] .dir-toggle-to-rtl {
+    display: none;
+  }
+
+  [dir="rtl"] .dir-toggle-to-ltr {
+    display: inline;
+  }
+
   .header-divider {
     width: 1px;
     height: 1.5rem;
